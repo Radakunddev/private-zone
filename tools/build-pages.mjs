@@ -752,6 +752,8 @@ ${breadcrumb([["Főoldal", "index.html"], [crumb]])}
   });
 
 // Cégadat-blokk (a hiányzó jogi adatokat a Megrendelőnek kell kitöltenie)
+// Teljes cégadat-doboz (Adatvédelemhez) — a GDPR-nál elvárt tételekkel,
+// a még ismeretlen adatok kitöltendőként jelölve.
 const COMPANY_BOX = `<div class="legal-callout glass">
             <h3>A Szolgáltató (Adatkezelő) adatai</h3>
             <ul>
@@ -766,10 +768,28 @@ const COMPANY_BOX = `<div class="legal-callout glass">
             </ul>
           </div>`;
 
+// Rövidített cégadat-doboz (ÁSZF-hez) — csak a ténylegesen ismert adatok,
+// kitöltendő/placeholder mezők nélkül.
+const COMPANY_BOX_ASZF = `<div class="legal-callout glass">
+            <h3>A Szolgáltató adatai</h3>
+            <ul>
+              <li><strong>Név:</strong> Private Zone Security</li>
+              <li><strong>Székhely:</strong> ${ADDRESS_L1}, ${ADDRESS_L2}</li>
+              <li><strong>Telefon:</strong> <a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
+              <li><strong>E-mail:</strong> <a href="mailto:${EMAIL}">${EMAIL}</a></li>
+            </ul>
+          </div>`;
+
 const LEGAL_DISCLAIMER = `<div class="legal-note">
             <strong>Megjegyzés:</strong> Ez a dokumentum sablon, amely a Private Zone Security
             szolgáltatásaihoz készült. A szögletes zárójelben [ … ] jelölt adatokat a tényleges
             cégadatokkal szükséges kitölteni, és a végleges szöveget javasolt jogi szakértővel
+            véleményeztetni a hatályos jogszabályoknak való teljes megfelelés érdekében.
+          </div>`;
+
+const ASZF_DISCLAIMER = `<div class="legal-note">
+            <strong>Megjegyzés:</strong> Ez a dokumentum sablon, amely a Private Zone Security
+            szolgáltatásaihoz készült. A végleges szöveget javasolt jogi szakértővel
             véleményeztetni a hatályos jogszabályoknak való teljes megfelelés érdekében.
           </div>`;
 
@@ -781,8 +801,8 @@ const aszf = legalPage({
   updated: "2026. július 1.",
   lead: "Jelen Általános Szerződési Feltételek (a továbbiakban: ÁSZF) a Private Zone Security által nyújtott biztonsági szolgáltatások igénybevételének feltételeit szabályozzák.",
   blocks: [
-    LEGAL_DISCLAIMER,
-    COMPANY_BOX,
+    ASZF_DISCLAIMER,
+    COMPANY_BOX_ASZF,
     `<h2>1. Az ÁSZF hatálya</h2>
           <p>Jelen ÁSZF a Szolgáltató és a szolgáltatásait igénybe vevő Megrendelő (a továbbiakban együtt: Felek) között létrejövő valamennyi szerződéses jogviszonyra irányadó, kivéve, ha a Felek egyedi szerződésben ettől eltérően állapodnak meg. Egyedi szerződés és az ÁSZF eltérése esetén az egyedi szerződés rendelkezései az irányadók.</p>
           <p>A Szolgáltató fenntartja a jogot az ÁSZF egyoldalú módosítására; a módosítás a közzététel napjától hatályos, a már megkötött szerződéseket nem érinti hátrányosan.</p>`,
