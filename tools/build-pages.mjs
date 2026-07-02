@@ -38,7 +38,9 @@ const SERVICES = [
 ];
 
 /* ── közös sablonrészek ── */
-const nav = (active) => `
+const nav = (active) => {
+  const inServices = active === "szolgaltatasok" || SERVICES.some((s) => s.slug === active);
+  return `
   <header class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="brand" aria-label="Private Zone Security — kezdőlap">
@@ -50,7 +52,17 @@ const nav = (active) => `
       </a>
 
       <nav class="nav-links" id="navLinks" aria-label="Fő navigáció">
-        <a href="index.html#szolgaltatasok" ${active === "szolgaltatasok" ? 'class="active"' : ""}>Szolgáltatások</a>
+        <div class="has-dropdown">
+          <button class="dropdown-toggle${inServices ? " active" : ""}" aria-haspopup="true" aria-expanded="false">
+            Szolgáltatások
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="dropdown">
+            <div class="dropdown-inner">
+              ${SERVICES.map((s) => `<a href="${s.slug}.html"${active === s.slug ? ' class="active"' : ""}>${s.name}</a>`).join("\n              ")}
+            </div>
+          </div>
+        </div>
         <a href="rolunk.html" ${active === "rolunk" ? 'class="active"' : ""}>Rólunk</a>
         <a href="index.html#folyamat">Folyamat</a>
         <a href="index.html#referenciak">Referenciák</a>
@@ -69,6 +81,7 @@ const nav = (active) => `
       </div>
     </div>
   </header>`;
+};
 
 const footer = `
   <footer class="footer">
@@ -162,7 +175,7 @@ const servicePage = (s) =>
   page({
     title: s.name,
     desc: s.metaDesc,
-    active: "szolgaltatasok",
+    active: s.slug,
     body: `
     <section class="page-hero">
       <div class="container">

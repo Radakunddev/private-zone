@@ -3,6 +3,14 @@
    Elegáns dark-first dizájn, arany akcentek, glassmorphism
    ═══════════════════════════════════════════════════════════════ */
 
+@font-face {
+  font-family: "PZS Helvetica";
+  src: url("../assets/fonts/Helvetica.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --gold: #C9A24B;
   --gold-light: #E4C87F;
@@ -22,8 +30,8 @@
   --shadow: 0 24px 60px rgba(0, 0, 0, .45);
 
   --radius: 20px;
-  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "PZS Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "PZS Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --ease: cubic-bezier(.22, .8, .3, 1);
 }
 
@@ -222,6 +230,64 @@ h3 { font-size: 1.3rem; }
 }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
+
+/* ── Legördülő menü (Szolgáltatások) ── */
+.has-dropdown { position: relative; }
+.dropdown-toggle {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: none; border: 0; cursor: pointer;
+  font: 600 .85rem var(--font-body); letter-spacing: .08em;
+  color: var(--ink-soft);
+  padding: .4rem 0;
+  transition: color .3s;
+}
+.dropdown-toggle:hover, .has-dropdown:hover .dropdown-toggle,
+.dropdown-toggle.active { color: var(--ink); }
+.dropdown-toggle .caret {
+  width: .6rem; height: .6rem; stroke: currentColor; stroke-width: 2.4; fill: none;
+  transition: transform .35s var(--ease);
+}
+.has-dropdown:hover .dropdown-toggle .caret,
+.has-dropdown:focus-within .dropdown-toggle .caret { transform: rotate(180deg); }
+
+.dropdown {
+  position: absolute; top: calc(100% + .9rem); left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 250px;
+  padding: .6rem;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+  z-index: 60;
+}
+.dropdown-inner { display: grid; gap: .1rem; }
+.dropdown::before {
+  content: ""; position: absolute; top: -1.1rem; left: 0; right: 0; height: 1.1rem;
+}
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.dropdown a {
+  display: block;
+  padding: .7rem .9rem;
+  font: 600 .85rem var(--font-body); letter-spacing: .04em;
+  color: var(--ink-soft); text-decoration: none;
+  border-radius: 10px;
+  transition: color .25s, background .25s, padding-left .25s;
+}
+.dropdown a::after { display: none; }
+.dropdown a:hover, .dropdown a.active {
+  color: var(--gold);
+  background: rgba(201, 162, 75, .1);
+  padding-left: 1.2rem;
+}
 
 .nav-actions { display: flex; align-items: center; gap: .9rem; }
 .btn-nav { padding: .7rem 1.4rem; font-size: .8rem; }
@@ -561,10 +627,30 @@ h3 { font-size: 1.3rem; }
     opacity: 0; visibility: hidden;
     transition: opacity .4s var(--ease), visibility .4s;
   }
-  .nav-links.open { opacity: 1; visibility: visible; z-index: 49; }
+  .nav-links.open { opacity: 1; visibility: visible; z-index: 49; overflow-y: auto; padding: 6rem 1.5rem; }
   .nav-links a { font-size: 1.15rem; }
   .hamburger { display: flex; }
   .btn-nav { display: none; }
+
+  /* legördülő mobilon: inline, kibontható lista */
+  .has-dropdown { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+  .dropdown-toggle { font-size: 1.15rem; }
+  .dropdown {
+    position: static; transform: none; min-width: 0; width: 100%;
+    max-width: 320px; padding: 0; margin: 0 auto;
+    background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+    grid-template-rows: 0fr;
+    opacity: 1; visibility: visible; pointer-events: auto;
+    display: grid; gap: 0;
+    transition: grid-template-rows .35s var(--ease);
+    overflow: hidden;
+  }
+  .dropdown::before { display: none; }
+  .has-dropdown.open .dropdown { grid-template-rows: 1fr; }
+  .dropdown > * { min-height: 0; }
+  .dropdown-inner { overflow: hidden; display: grid; gap: .1rem; padding-top: .3rem; }
+  .dropdown a { text-align: center; font-size: 1rem; }
+  .dropdown a:hover, .dropdown a.active { padding-left: .9rem; }
 
   .about-grid, .contact-grid { grid-template-columns: 1fr; }
   .about-visual { max-width: 380px; margin-inline: auto; }

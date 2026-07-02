@@ -47,6 +47,19 @@
     })
   );
 
+  // legördülő "Szolgáltatások": mobilon kattintásra bomlik ki
+  const dd = navLinks.querySelector(".has-dropdown");
+  const ddToggle = dd && dd.querySelector(".dropdown-toggle");
+  if (dd && ddToggle) {
+    ddToggle.addEventListener("click", (e) => {
+      // csak mobil nézetben kezeljük kattintással (desktopon hover nyitja)
+      if (window.matchMedia("(min-width: 881px)").matches) return;
+      e.preventDefault();
+      const open = dd.classList.toggle("open");
+      ddToggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+
   // aktív szekció jelölése (csak az oldalon belüli horgony-linkekre)
   const sections = [...document.querySelectorAll("main section[id]")];
   const linkFor = {};
