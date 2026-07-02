@@ -17,6 +17,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "PZS Helvetica";
+  src: url("../assets/fonts/Helvetica-BoldOblique.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   /* Monokróm akcent: sötét témán off-white, világoson charcoal.
@@ -119,6 +126,7 @@ h3 { font-size: 1.3rem; }
 .overline::before { content: ""; width: 2.6rem; height: 1px; background: var(--gold); opacity: .7; }
 
 .gold-text {
+  font-style: italic;
   background: linear-gradient(100deg, var(--gold-deep), var(--gold-light) 45%, var(--gold));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
