@@ -10,6 +10,9 @@ Betűtípus: Helvetica webfontként beépítve (Regular a törzsszöveghez, Bold
   automatikusan forog, desktopon egérrel is forgatható (`assets/models/bodyguard.glb`,
   lokálisan vendorolt `model-viewer` komponenssel). Mögötte finom aranypor-animáció
   (saját, függőség nélküli canvas).
+- **Aurora háttéreffekt** — a React Bits `<Aurora />` komponens hűséges vanilla WebGL2 portja
+  (`js/aurora.js`), a brand arany-krém színeivel a hero hátterében. Ugyanazok a shaderek és
+  prop-ok (colorStops, speed, blend, amplitude), de React és `ogl` függőség nélkül.
 - **Glassmorphism** — üveghatású kártyák, panelek és navigáció (`backdrop-filter`).
 - **Világos / sötét téma** — kapcsolóval, a választás mentésre kerül (`localStorage`),
   a logó automatikusan vált a light/dark változat között.
@@ -34,6 +37,7 @@ Aloldalak (teljes szöveges tartalommal, GYIK-kel):
   kapcsolat.html              — Kapcsolat (űrlappal)
 
 css/style.css       — dizájn (CSS-változókkal, téma-támogatással)
+js/aurora.js        — Aurora WebGL2 háttéreffekt (React Bits port, csak a főoldalon)
 js/hero3d.js        — aranypor háttér-animáció a hero-ban (csak a főoldalon)
 js/main.js          — navigáció, téma, animációk, űrlap (minden oldalon)
 assets/models/bodyguard.glb — a hero 3D öltönyös alakja (glTF binary)
