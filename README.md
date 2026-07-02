@@ -2,7 +2,7 @@
 
 Elegáns, prémium megjelenésű weboldal a Private Zone Security részére.
 Statikus site, build lépés és külső függőség nélkül — bármilyen tárhelyen azonnal futtatható.
-Betűtípus: Helvetica (rendszerbetű, webfont-betöltés nélkül).
+Betűtípus: Helvetica webfontként beépítve (Regular a törzsszöveghez, Bold a címsorokhoz).
 
 ## Fő jellemzők
 
