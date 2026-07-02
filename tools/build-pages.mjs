@@ -787,12 +787,6 @@ const LEGAL_DISCLAIMER = `<div class="legal-note">
             véleményeztetni a hatályos jogszabályoknak való teljes megfelelés érdekében.
           </div>`;
 
-const ASZF_DISCLAIMER = `<div class="legal-note">
-            <strong>Megjegyzés:</strong> Ez a dokumentum sablon, amely a Private Zone Security
-            szolgáltatásaihoz készült. A végleges szöveget javasolt jogi szakértővel
-            véleményeztetni a hatályos jogszabályoknak való teljes megfelelés érdekében.
-          </div>`;
-
 const aszf = legalPage({
   slug: "aszf",
   title: "Általános Szerződési Feltételek",
@@ -801,7 +795,6 @@ const aszf = legalPage({
   updated: "2026. július 1.",
   lead: "Jelen Általános Szerződési Feltételek (a továbbiakban: ÁSZF) a Private Zone Security által nyújtott biztonsági szolgáltatások igénybevételének feltételeit szabályozzák.",
   blocks: [
-    ASZF_DISCLAIMER,
     COMPANY_BOX_ASZF,
     `<h2>1. Az ÁSZF hatálya</h2>
           <p>Jelen ÁSZF a Szolgáltató és a szolgáltatásait igénybe vevő Megrendelő (a továbbiakban együtt: Felek) között létrejövő valamennyi szerződéses jogviszonyra irányadó, kivéve, ha a Felek egyedi szerződésben ettől eltérően állapodnak meg. Egyedi szerződés és az ÁSZF eltérése esetén az egyedi szerződés rendelkezései az irányadók.</p>
