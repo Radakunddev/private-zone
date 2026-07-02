@@ -28,11 +28,12 @@ const LOGO_SVG = `<svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="tr
 </svg>`;
 
 /* ── szolgáltatások listája (menühöz, footerhez, kapcsolódókhoz) ── */
+// Sorrend = fontossági sorrend. Az első kettő a két kiemelt szolgáltatás.
 const SERVICES = [
   { slug: "orzes-vedelem", name: "Őrzés-védelem" },
+  { slug: "koveteleskezeles", name: "Követeléskezelés" },
   { slug: "szemelyvedelem", name: "Személyvédelem" },
   { slug: "rendezvenybiztositas", name: "Rendezvénybiztosítás" },
-  { slug: "koveteleskezeles", name: "Követeléskezelés" },
   { slug: "magannyomozas", name: "Magánnyomozás" },
   { slug: "birtokvedelem", name: "Birtokvédelem" },
 ];
