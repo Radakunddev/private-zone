@@ -348,26 +348,6 @@ h3 { font-size: 1.3rem; }
   color: var(--ink-faint);
 }
 
-.scroll-hint {
-  position: absolute; left: 50%; bottom: 6.5rem; z-index: 2;
-  transform: translateX(-50%);
-  opacity: .6; transition: opacity .3s;
-}
-.scroll-hint:hover { opacity: 1; }
-.mouse {
-  display: block; width: 24px; height: 38px;
-  border: 1.5px solid var(--ink-soft); border-radius: 14px;
-  position: relative;
-}
-.wheel {
-  position: absolute; left: 50%; top: 7px;
-  width: 3px; height: 7px; border-radius: 3px;
-  background: var(--gold);
-  transform: translateX(-50%);
-  animation: wheel 1.8s ease-in-out infinite;
-}
-@keyframes wheel { 0%,100% { transform: translate(-50%, 0); opacity: 1; } 60% { transform: translate(-50%, 12px); opacity: 0; } }
-
 /* ── Stats ──────────────────────────────────────────────────── */
 .stats { margin-top: -4.5rem; position: relative; z-index: 3; }
 .stats-panel {
@@ -605,7 +585,7 @@ h3 { font-size: 1.3rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .about-ring, .wheel, .pl-draw path { animation: none; }
+  .about-ring, .pl-draw path { animation: none; }
 }
 
 /* ── Reszponzív ─────────────────────────────────────────────── */
@@ -666,7 +646,6 @@ h3 { font-size: 1.3rem; }
   .form-row { grid-template-columns: 1fr; }
   .cta-panel { text-align: center; justify-content: center; }
   .hero-badges { gap: .8rem; font-size: .76rem; }
-  .scroll-hint { display: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
