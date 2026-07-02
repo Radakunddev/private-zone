@@ -858,6 +858,31 @@ h3 { font-size: 1.3rem; }
 /* értéklista a Rólunk oldalon */
 .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
 
+/* jogi oldalak (ÁSZF, Adatvédelem) */
+.legal { max-width: 54rem; }
+.legal .updated {
+  color: var(--ink-faint); font-size: .85rem;
+  letter-spacing: .04em; margin-bottom: 2.4rem;
+}
+.legal h2 { font-size: 1.4rem; margin: 2.6rem 0 .9rem; }
+.legal h3 { font-size: 1.05rem; margin: 0 0 1rem; }
+.legal p { color: var(--ink-soft); margin-bottom: 1rem; }
+.legal strong { color: var(--ink); }
+.legal a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.legal ul { list-style: none; display: grid; gap: .55rem; margin: 0 0 1.2rem; }
+.legal li { display: flex; gap: .7rem; color: var(--ink-soft); }
+.legal li::before { content: "—"; color: var(--gold); flex: 0 0 auto; }
+.legal-callout { padding: 1.8rem 2rem; margin: 0 0 2.2rem; }
+.legal-callout ul { margin: 0; gap: .5rem; }
+.legal-callout li::before { content: ""; }
+.legal-note {
+  padding: 1.1rem 1.3rem; margin: 0 0 2rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(var(--gold-rgb), .06);
+  color: var(--ink-soft); font-size: .92rem;
+}
+.legal-note strong { color: var(--gold); }
+
 @media (max-width: 1024px) {
   .values-grid { grid-template-columns: 1fr; }
 }

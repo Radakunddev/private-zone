@@ -14,6 +14,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PHONE_DISPLAY = "+36 30 397 6916";
 const PHONE_TEL = "+36303976916";
 const EMAIL = "info@privatezonesecurity.hu";
+const ADDRESS_L1 = "Panorama Office irodaház";
+const ADDRESS_L2 = "1024 Budapest, Ady Endre utca 19";
 
 /* ── logó (hivatalos PNG-k, témafüggő váltással) ── */
 const LOGO_IMG = `<img src="assets/logo-light.png" alt="" class="logo-on-dark">
@@ -83,12 +85,15 @@ const footer = `
         <img src="assets/logo-light.png" alt="Private Zone Security logó" class="footer-logo logo-on-dark">
         <img src="assets/logo-dark.png" alt="Private Zone Security logó" class="footer-logo logo-on-light">
         <p><strong>PRIVATE ZONE SECURITY</strong><br>Diszkréció. Elegancia. Biztonság.</p>
-        <p style="margin-top:.6rem"><a href="tel:${PHONE_TEL}" style="color:inherit;text-decoration:none">${PHONE_DISPLAY}</a></p>
+        <p style="margin-top:.6rem">${ADDRESS_L1}<br>${ADDRESS_L2}</p>
+        <p style="margin-top:.4rem"><a href="tel:${PHONE_TEL}" style="color:inherit;text-decoration:none">${PHONE_DISPLAY}</a></p>
       </div>
       <nav class="footer-nav" aria-label="Lábléc navigáció">
         ${SERVICES.map((s) => `<a href="${s.slug}.html">${s.name}</a>`).join("\n        ")}
         <a href="rolunk.html">Rólunk</a>
         <a href="kapcsolat.html">Kapcsolat</a>
+        <a href="aszf.html">ÁSZF</a>
+        <a href="adatvedelem.html">Adatvédelem</a>
       </nav>
       <div class="footer-meta">
         <p>Hatósági engedéllyel rendelkező személy- és vagyonvédelmi szolgáltató.</p>
@@ -113,7 +118,7 @@ const ctaBand = `
       </div>
     </section>`;
 
-const page = ({ title, desc, active, body }) => `<!DOCTYPE html>
+const page = ({ title, desc, active, body, noCta }) => `<!DOCTYPE html>
 <html lang="hu" data-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -130,7 +135,7 @@ ${nav(active)}
 
   <main>
 ${body}
-${ctaBand}
+${noCta ? "" : ctaBand}
   </main>
 ${footer}
 
@@ -665,7 +670,7 @@ ${breadcrumb([["Főoldal", "index.html"], ["Kapcsolat"]])}
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
-              <div><strong>Iroda</strong><span>Budapest — pontos cím egyeztetés után</span></div>
+              <div><strong>Iroda</strong><span>${ADDRESS_L1}<br>${ADDRESS_L2}</span></div>
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
@@ -719,6 +724,143 @@ ${breadcrumb([["Főoldal", "index.html"], ["Kapcsolat"]])}
     </section>`,
 });
 
+/* ═══════════ JOGI OLDALAK (ÁSZF, Adatvédelem) ═══════════ */
+const legalPage = ({ slug, title, crumb, desc, updated, lead, blocks }) =>
+  page({
+    title,
+    desc,
+    active: slug,
+    noCta: true,
+    body: `
+    <section class="page-hero">
+      <div class="container">
+${breadcrumb([["Főoldal", "index.html"], [crumb]])}
+        <p class="overline reveal">Jogi tájékoztató</p>
+        <h1 class="reveal d1">${title}</h1>
+        <p class="lead reveal d2">${lead}</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:2rem">
+      <div class="container">
+        <article class="legal reveal">
+          <p class="updated">Hatályos / utolsó frissítés: ${updated}</p>
+          ${blocks.join("\n          ")}
+        </article>
+      </div>
+    </section>`,
+  });
+
+// Cégadat-blokk (a hiányzó jogi adatokat a Megrendelőnek kell kitöltenie)
+const COMPANY_BOX = `<div class="legal-callout glass">
+            <h3>A Szolgáltató (Adatkezelő) adatai</h3>
+            <ul>
+              <li><strong>Név:</strong> Private Zone Security [cégnév pontosítandó]</li>
+              <li><strong>Székhely:</strong> ${ADDRESS_L1}, ${ADDRESS_L2}</li>
+              <li><strong>Cégjegyzékszám:</strong> [kitöltendő]</li>
+              <li><strong>Adószám:</strong> [kitöltendő]</li>
+              <li><strong>Működési / SzVMSzK engedély száma:</strong> [kitöltendő]</li>
+              <li><strong>Képviselő:</strong> [kitöltendő]</li>
+              <li><strong>Telefon:</strong> <a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
+              <li><strong>E-mail:</strong> <a href="mailto:${EMAIL}">${EMAIL}</a></li>
+            </ul>
+          </div>`;
+
+const LEGAL_DISCLAIMER = `<div class="legal-note">
+            <strong>Megjegyzés:</strong> Ez a dokumentum sablon, amely a Private Zone Security
+            szolgáltatásaihoz készült. A szögletes zárójelben [ … ] jelölt adatokat a tényleges
+            cégadatokkal szükséges kitölteni, és a végleges szöveget javasolt jogi szakértővel
+            véleményeztetni a hatályos jogszabályoknak való teljes megfelelés érdekében.
+          </div>`;
+
+const aszf = legalPage({
+  slug: "aszf",
+  title: "Általános Szerződési Feltételek",
+  crumb: "ÁSZF",
+  desc: "A Private Zone Security személy- és vagyonvédelmi szolgáltatásaira vonatkozó Általános Szerződési Feltételek.",
+  updated: "2026. július 1.",
+  lead: "Jelen Általános Szerződési Feltételek (a továbbiakban: ÁSZF) a Private Zone Security által nyújtott biztonsági szolgáltatások igénybevételének feltételeit szabályozzák.",
+  blocks: [
+    LEGAL_DISCLAIMER,
+    COMPANY_BOX,
+    `<h2>1. Az ÁSZF hatálya</h2>
+          <p>Jelen ÁSZF a Szolgáltató és a szolgáltatásait igénybe vevő Megrendelő (a továbbiakban együtt: Felek) között létrejövő valamennyi szerződéses jogviszonyra irányadó, kivéve, ha a Felek egyedi szerződésben ettől eltérően állapodnak meg. Egyedi szerződés és az ÁSZF eltérése esetén az egyedi szerződés rendelkezései az irányadók.</p>
+          <p>A Szolgáltató fenntartja a jogot az ÁSZF egyoldalú módosítására; a módosítás a közzététel napjától hatályos, a már megkötött szerződéseket nem érinti hátrányosan.</p>`,
+    `<h2>2. A szolgáltatások köre</h2>
+          <p>A Szolgáltató különösen az alábbi tevékenységeket végzi, a vonatkozó jogszabályi keretek között:</p>
+          <ul>
+            <li>élőerős őrzés-védelem, objektum- és vagyonvédelem;</li>
+            <li>személyvédelem;</li>
+            <li>rendezvénybiztosítás;</li>
+            <li>követeléskezelés;</li>
+            <li>magánnyomozás;</li>
+            <li>birtokvédelemmel összefüggő biztonsági közreműködés.</li>
+          </ul>
+          <p>A Szolgáltató tevékenységét a személy- és vagyonvédelmi, valamint a magánnyomozói tevékenység szabályairól szóló hatályos jogszabályok (különösen a 2005. évi CXXXIII. törvény) szerint, engedéllyel és felelősségbiztosítással végzi.</p>`,
+    `<h2>3. A szerződés létrejötte</h2>
+          <p>A szerződés a Felek egyező akaratnyilatkozatával, írásban jön létre. A Megrendelő ajánlatkérését követően a Szolgáltató egyedi árajánlatot ad; a szerződés az ajánlat elfogadásával és a szolgáltatási szerződés aláírásával jön létre.</p>
+          <p>A megrendeléshez szükséges adatok valódiságáért a Megrendelő felel.</p>`,
+    `<h2>4. Díjazás és fizetési feltételek</h2>
+          <p>A szolgáltatás díját az egyedi szerződés tartalmazza. Eltérő megállapodás hiányában a Szolgáltató a teljesítésről számlát állít ki, amelyet a Megrendelő a számlán feltüntetett fizetési határidőn belül köteles kiegyenlíteni.</p>
+          <p>Késedelmes fizetés esetén a Szolgáltató a Ptk. szerinti késedelmi kamatot és behajtási költségátalányt érvényesíthet.</p>`,
+    `<h2>5. A Felek jogai és kötelezettségei</h2>
+          <p>A Szolgáltató a szolgáltatást a tőle elvárható gondossággal, szakszerűen, a vonatkozó jogszabályok betartásával nyújtja. A Megrendelő köteles a teljesítéshez szükséges információkat és feltételeket biztosítani, valamint a díjat határidőben megfizetni.</p>`,
+    `<h2>6. Titoktartás</h2>
+          <p>A Szolgáltató a szerződés teljesítése során tudomására jutott minden információt bizalmasan kezel, azt harmadik félnek – jogszabályi kötelezettség hiányában – nem adja ki. A titoktartási kötelezettség a szerződés megszűnését követően is fennmarad.</p>`,
+    `<h2>7. Felelősség</h2>
+          <p>A Szolgáltató felelősségére a Ptk. és az egyedi szerződés rendelkezései az irányadók. A Szolgáltató nem felel a Megrendelő által szolgáltatott hibás vagy hiányos adatokból, illetve a Megrendelő mulasztásából eredő károkért.</p>`,
+    `<h2>8. Panaszkezelés</h2>
+          <p>A Megrendelő az esetleges panaszát a Szolgáltató fenti elérhetőségein jelentheti be. A Szolgáltató a panaszt kivizsgálja, és a jogszabályban meghatározott határidőn belül írásban válaszol.</p>`,
+    `<h2>9. Vegyes és záró rendelkezések</h2>
+          <p>A jelen ÁSZF-ben nem szabályozott kérdésekben a magyar jog, különösen a Polgári Törvénykönyv rendelkezései az irányadók. A Felek a jogvitáikat elsősorban egyeztetés útján rendezik.</p>`,
+  ],
+});
+
+const adatvedelem = legalPage({
+  slug: "adatvedelem",
+  title: "Adatvédelmi Nyilatkozat",
+  crumb: "Adatvédelem",
+  desc: "A Private Zone Security adatkezelési tájékoztatója a GDPR és a hatályos adatvédelmi jogszabályok szerint.",
+  updated: "2026. július 1.",
+  lead: "A Private Zone Security elkötelezett a személyes adatok védelme mellett. Jelen tájékoztató bemutatja, hogyan kezeljük az Ön adatait az EU 2016/679 (GDPR) rendelettel és a hatályos magyar jogszabályokkal összhangban.",
+  blocks: [
+    LEGAL_DISCLAIMER,
+    COMPANY_BOX,
+    `<h2>1. A kezelt adatok köre és célja</h2>
+          <p>A weboldalon a kapcsolatfelvételi űrlapon keresztül az alábbi adatokat kezeljük, kizárólag a megkeresés megválaszolása és az ajánlatadás céljából:</p>
+          <ul>
+            <li><strong>név</strong> – a kapcsolatfelvételhez;</li>
+            <li><strong>e-mail cím</strong> – a válaszadáshoz;</li>
+            <li><strong>telefonszám</strong> (opcionális) – a kapcsolatfelvételhez;</li>
+            <li><strong>az üzenet tartalma</strong> – az igény megértéséhez.</li>
+          </ul>
+          <p>A kapcsolati űrlap az adatokat nem tárolja szerveren: az elküldés az Ön levelezőprogramját nyitja meg egy előre kitöltött e-maillel, így az adatok e-mailben jutnak el hozzánk.</p>`,
+    `<h2>2. Az adatkezelés jogalapja</h2>
+          <p>Az adatkezelés jogalapja az érintett hozzájárulása (GDPR 6. cikk (1) a) pont), illetve a szerződés megkötését megelőző lépések megtétele az érintett kérésére (GDPR 6. cikk (1) b) pont). Szerződéskötés esetén az adatkezelést jogi kötelezettség teljesítése (pl. számviteli előírások) is megalapozhatja.</p>`,
+    `<h2>3. Az adatkezelés időtartama</h2>
+          <p>A megkeresés kapcsán megadott adatokat a cél eléréséhez szükséges ideig, legfeljebb a kapcsolatfelvételt követő ésszerű ideig kezeljük, ezt követően töröljük. Szerződéses jogviszony esetén a jogszabályban előírt megőrzési idő (pl. számviteli bizonylatok esetén 8 év) az irányadó.</p>`,
+    `<h2>4. Sütik (cookies) és tárolás</h2>
+          <p>A weboldal nem használ nyomkövető vagy marketing sütiket. Kizárólag a böngésző helyi tárolóját (localStorage) alkalmazzuk a választott megjelenési téma (világos/sötét) megjegyzésére; ez az adat nem kerül továbbításra, és nem alkalmas személyazonosításra.</p>`,
+    `<h2>5. Adatfeldolgozók és adattovábbítás</h2>
+          <p>Személyes adatait harmadik félnek nem adjuk el és nem továbbítjuk, kivéve, ha erre jogszabály kötelez. A weboldal tárhelyszolgáltatója az adatokhoz technikai okból hozzáférhet; a tárhelyszolgáltató adatai: [kitöltendő].</p>`,
+    `<h2>6. Az érintett jogai</h2>
+          <p>Az irányadó jogszabályok szerint Önt megilletik az alábbi jogok:</p>
+          <ul>
+            <li>tájékoztatáshoz és hozzáféréshez való jog;</li>
+            <li>helyesbítéshez való jog;</li>
+            <li>törléshez való jog („elfeledtetéshez való jog");</li>
+            <li>az adatkezelés korlátozásához való jog;</li>
+            <li>adathordozhatósághoz való jog;</li>
+            <li>tiltakozáshoz való jog, valamint a hozzájárulás bármikori visszavonása.</li>
+          </ul>
+          <p>Jogai gyakorlását a fenti elérhetőségeinken kezdeményezheti; kérelmére indokolatlan késedelem nélkül válaszolunk.</p>`,
+    `<h2>7. Adatbiztonság</h2>
+          <p>Megfelelő technikai és szervezési intézkedésekkel gondoskodunk a személyes adatok védelméről a jogosulatlan hozzáférés, megváltoztatás, továbbítás, nyilvánosságra hozatal, törlés vagy megsemmisítés ellen.</p>`,
+    `<h2>8. Jogorvoslat</h2>
+          <p>Amennyiben úgy ítéli meg, hogy adatai kezelése jogsértő, panaszt tehet a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH, 1055 Budapest, Falk Miksa utca 9-11., <a href="https://naih.hu" target="_blank" rel="noopener">naih.hu</a>), illetve bírósághoz fordulhat.</p>`,
+  ],
+});
+
 /* ── generálás ── */
 for (const s of CONTENT) {
   writeFileSync(join(ROOT, `${s.slug}.html`), servicePage(s));
@@ -728,3 +870,7 @@ writeFileSync(join(ROOT, "rolunk.html"), rolunk);
 console.log("✓ rolunk.html");
 writeFileSync(join(ROOT, "kapcsolat.html"), kapcsolat);
 console.log("✓ kapcsolat.html");
+writeFileSync(join(ROOT, "aszf.html"), aszf);
+console.log("✓ aszf.html");
+writeFileSync(join(ROOT, "adatvedelem.html"), adatvedelem);
+console.log("✓ adatvedelem.html");
