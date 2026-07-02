@@ -17,6 +17,12 @@ const EMAIL = "info@privatezonesecurity.hu";
 const ADDRESS_L1 = "Panorama Office irodaház";
 const ADDRESS_L2 = "1024 Budapest, Ady Endre utca 19";
 
+// egyes szolgáltatás-aloldalak hero-videója (álló 9:16, néma auto-loop)
+const HERO_VIDEOS = {
+  "orzes-vedelem": "assets/Security1.mp4",
+  "koveteleskezeles": "assets/Security3.mp4",
+};
+
 /* ── logó (hivatalos PNG-k, témafüggő váltással) ── */
 const LOGO_IMG = `<img src="assets/logo-light.png" alt="" class="logo-on-dark">
           <img src="assets/logo-dark.png" alt="" class="logo-on-light">`;
@@ -204,21 +210,32 @@ const servicePage = (s) => {
     desc: s.metaDesc,
     active: s.slug,
     body: `
-    <section class="page-hero">
+    <section class="page-hero${HERO_VIDEOS[s.slug] ? " page-hero--video" : ""}">
       <div class="container">
+        <div class="page-hero-inner">
+          <div class="page-hero-copy">
 ${breadcrumb([
   [T("Főoldal", "Home"), "index.html"],
   [T("Szolgáltatások", "Services"), "index.html#szolgaltatasok"],
   [T(s.name, e.name || s.name)],
 ])}
-        <p class="overline reveal">${T(s.overline, e.overline)}</p>
-        <h1 class="reveal d1">${T(s.h1, e.h1)}</h1>
-        <p class="lead reveal d2">${T(s.lead, e.lead)}</p>
-        <div class="hero-cta reveal d3">
-          <a href="kapcsolat.html" class="btn btn-gold">${T("Ajánlatot kérek", "Request a quote")}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="tel:${PHONE_TEL}" class="btn btn-ghost">${PHONE_DISPLAY}</a>
+            <p class="overline reveal">${T(s.overline, e.overline)}</p>
+            <h1 class="reveal d1">${T(s.h1, e.h1)}</h1>
+            <p class="lead reveal d2">${T(s.lead, e.lead)}</p>
+            <div class="hero-cta reveal d3">
+              <a href="kapcsolat.html" class="btn btn-gold">${T("Ajánlatot kérek", "Request a quote")}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="tel:${PHONE_TEL}" class="btn btn-ghost">${PHONE_DISPLAY}</a>
+            </div>
+          </div>
+${HERO_VIDEOS[s.slug]
+  ? `          <div class="page-hero-video reveal d2" aria-hidden="true">
+            <div class="vid">
+              <video src="${HERO_VIDEOS[s.slug]}" autoplay loop muted playsinline preload="metadata"></video>
+            </div>
+          </div>`
+  : ""}
         </div>
       </div>
     </section>
