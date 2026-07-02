@@ -15,17 +15,9 @@ const PHONE_DISPLAY = "+36 30 397 6916";
 const PHONE_TEL = "+36303976916";
 const EMAIL = "info@privatezonesecurity.hu";
 
-/* ── logó SVG (inline, currentColor) ── */
-const LOGO_SVG = `<svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true">
-  <path d="M84 104 C 88 262, 146 396, 248 462 L 253 466 L 213 152 Z"/>
-  <path d="M428 104 C 424 262, 366 396, 264 462 L 259 466 L 299 152 Z"/>
-  <path d="M196 96 L 244 113 L 244 139 L 196 150 C 190 132, 190 114, 196 96 Z"/>
-  <path d="M316 96 L 268 113 L 268 139 L 316 150 C 322 132, 322 114, 316 96 Z"/>
-  <path d="M256 110 L 267 126 L 256 142 L 245 126 Z"/>
-  <path transform="translate(256 216)" d="M0 -20 L4.7 -6.47 L19.02 -6.18 L7.61 2.47 L11.76 16.18 L0 8 L-11.76 16.18 L-7.61 2.47 L-19.02 -6.18 L-4.7 -6.47 Z"/>
-  <path transform="translate(256 296)" d="M0 -20 L4.7 -6.47 L19.02 -6.18 L7.61 2.47 L11.76 16.18 L0 8 L-11.76 16.18 L-7.61 2.47 L-19.02 -6.18 L-4.7 -6.47 Z"/>
-  <path transform="translate(256 376)" d="M0 -20 L4.7 -6.47 L19.02 -6.18 L7.61 2.47 L11.76 16.18 L0 8 L-11.76 16.18 L-7.61 2.47 L-19.02 -6.18 L-4.7 -6.47 Z"/>
-</svg>`;
+/* ── logó (hivatalos PNG-k, témafüggő váltással) ── */
+const LOGO_IMG = `<img src="assets/logo-light.png" alt="" class="logo-on-dark">
+          <img src="assets/logo-dark.png" alt="" class="logo-on-light">`;
 
 /* ── szolgáltatások listája (menühöz, footerhez, kapcsolódókhoz) ── */
 // Sorrend = fontossági sorrend. Az első kettő a két kiemelt szolgáltatás.
@@ -45,7 +37,7 @@ const nav = (active) => {
   <header class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="brand" aria-label="Private Zone Security — kezdőlap">
-        <span class="brand-mark">${LOGO_SVG}</span>
+        <span class="brand-mark">${LOGO_IMG}</span>
         <span class="brand-text">
           <strong>PRIVATE ZONE</strong>
           <em>SECURITY</em>
@@ -88,8 +80,8 @@ const footer = `
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo-light.svg" alt="Private Zone Security logó" class="footer-logo logo-on-dark">
-        <img src="assets/logo-dark.svg" alt="Private Zone Security logó" class="footer-logo logo-on-light">
+        <img src="assets/logo-light.png" alt="Private Zone Security logó" class="footer-logo logo-on-dark">
+        <img src="assets/logo-dark.png" alt="Private Zone Security logó" class="footer-logo logo-on-light">
         <p><strong>PRIVATE ZONE SECURITY</strong><br>Diszkréció. Elegancia. Biztonság.</p>
         <p style="margin-top:.6rem"><a href="tel:${PHONE_TEL}" style="color:inherit;text-decoration:none">${PHONE_DISPLAY}</a></p>
       </div>
@@ -128,7 +120,9 @@ const page = ({ title, desc, active, body }) => `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} — Private Zone Security</title>
   <meta name="description" content="${desc}">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

@@ -35,9 +35,10 @@ Aloldalak (teljes szöveges tartalommal, GYIK-kel):
 css/style.css       — dizájn (CSS-változókkal, téma-támogatással)
 js/hero3d.js        — 3D részecske-pajzs a hero-ban (csak a főoldalon)
 js/main.js          — navigáció, téma, animációk, űrlap (minden oldalon)
-assets/logo-light.svg  — fehér logó (sötét háttérre)
-assets/logo-dark.svg   — sötét logó (világos háttérre)
-assets/favicon.svg     — arany favicon
+assets/logo-light.png  — hivatalos fehér logó (sötét háttérre), négyzetre vágva
+assets/logo-dark.png   — hivatalos sötét logó (világos háttérre), négyzetre vágva
+assets/logo-*-original.png — a hivatalos logók eredeti, vágatlan (1080×1080) változata
+assets/favicon.png / favicon-32.png — favicon (fehér logó sötét, lekerekített háttéren)
 tools/build-pages.mjs  — aloldal-generátor (tartalom + sablon egy helyen)
 ```
 
