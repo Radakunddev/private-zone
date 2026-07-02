@@ -453,7 +453,7 @@ h3 { font-size: 1.3rem; }
 }
 .featured-cards {
   display: grid; grid-template-columns: 1fr;   /* a két kiemelt kártya egymás alatt */
-  gap: 1.6rem;
+  gap: 1.2rem;
 }
 .cards-secondary { grid-template-columns: repeat(4, 1fr); }
 
@@ -463,6 +463,7 @@ h3 { font-size: 1.3rem; }
   order: -1;                 /* asztali nézetben balra kerül */
   display: flex; justify-content: center; align-items: flex-start;
   padding: 1rem 0;
+  pointer-events: none;      /* dekoratív — soha ne blokkolja a kártyák hoverét */
 }
 .featured-videos .vid {
   position: relative;
@@ -484,7 +485,7 @@ h3 { font-size: 1.3rem; }
 .featured-videos .vid-b { margin-left: -9%; z-index: 2; }          /* magasabban, előrébb, átfed */
 
 .card-featured {
-  padding: 2.8rem 2.6rem;
+  padding: 1.9rem 2.2rem;
   border-color: rgba(var(--gold-rgb), .38);
   background:
     radial-gradient(600px 320px at 100% 0%, rgba(var(--gold-rgb),.12), transparent 60%),
@@ -492,10 +493,12 @@ h3 { font-size: 1.3rem; }
   box-shadow: var(--shadow), 0 0 0 1px rgba(var(--gold-rgb),.12);
 }
 .card-featured:hover { border-color: rgba(var(--gold-rgb), .6); }
-.card-featured .card-icon { width: 66px; height: 66px; }
-.card-featured .card-icon svg { width: 32px; height: 32px; }
-.card-featured h3 { font-size: 1.55rem; }
-.card-featured p { font-size: 1rem; }
+.card-featured .card-icon { width: 54px; height: 54px; margin-bottom: 1rem; }
+.card-featured .card-icon svg { width: 28px; height: 28px; }
+.card-featured h3 { font-size: 1.35rem; }
+.card-featured p { font-size: .95rem; }
+.card-featured .badge { margin-bottom: .9rem; }
+.card-featured .card-link { margin-top: 1rem; }
 
 .badge {
   display: inline-flex; align-items: center; gap: .45rem;
@@ -523,6 +526,12 @@ h3 { font-size: 1.3rem; }
   pointer-events: none;
 }
 .card:hover { border-color: rgba(var(--gold-rgb),.4); }
+/* a tilt kártyák a reveal után pörgős, késleltetés nélküli transformot kapjanak
+   (a .reveal/.d1 transition-delay-e egyébként megakasztaná a hover-tiltet) */
+.card.tilt.visible {
+  transition: transform .2s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease), opacity .9s var(--ease);
+  transition-delay: 0s;
+}
 .card:hover::after { opacity: 1; }
 
 .card-icon {
