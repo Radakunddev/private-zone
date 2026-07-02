@@ -7,13 +7,15 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ── Preloader ── */
+  /* ── Preloader (csak a főoldalon van) ── */
   const preloader = document.getElementById("preloader");
-  window.addEventListener("load", () => {
-    setTimeout(() => preloader.classList.add("done"), reduceMotion ? 0 : 900);
-  });
-  // biztonsági háló, ha a load esemény elmaradna (pl. lassú betűtípus)
-  setTimeout(() => preloader.classList.add("done"), 3500);
+  if (preloader) {
+    window.addEventListener("load", () => {
+      setTimeout(() => preloader.classList.add("done"), reduceMotion ? 0 : 900);
+    });
+    // biztonsági háló, ha a load esemény elmaradna
+    setTimeout(() => preloader.classList.add("done"), 3500);
+  }
 
   /* ── Téma ── */
   const root = document.documentElement;
@@ -45,10 +47,13 @@
     })
   );
 
-  // aktív szekció jelölése
+  // aktív szekció jelölése (csak az oldalon belüli horgony-linkekre)
   const sections = [...document.querySelectorAll("main section[id]")];
   const linkFor = {};
-  navLinks.querySelectorAll("a[href^='#']").forEach((a) => (linkFor[a.hash.slice(1)] = a));
+  navLinks.querySelectorAll("a").forEach((a) => {
+    const href = a.getAttribute("href") || "";
+    if (href.startsWith("#")) linkFor[href.slice(1)] = a;
+  });
   const activeObs = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       const link = linkFor[e.target.id];
@@ -117,7 +122,7 @@
   /* ── Kapcsolati űrlap (mailto-ba csomagolva, backend nélkül) ── */
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
-  form.addEventListener("submit", (e) => {
+  if (form) form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (!form.reportValidity()) return;
     const d = new FormData(form);
@@ -134,5 +139,6 @@
   });
 
   /* ── Évszám ── */
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 })();

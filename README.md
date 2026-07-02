@@ -1,7 +1,8 @@
 # Private Zone Security — weboldal
 
-Elegáns, prémium megjelenésű bemutatkozó oldal a Private Zone Security részére.
+Elegáns, prémium megjelenésű weboldal a Private Zone Security részére.
 Statikus site, build lépés és külső függőség nélkül — bármilyen tárhelyen azonnal futtatható.
+Betűtípus: Helvetica (rendszerbetű, webfont-betöltés nélkül).
 
 ## Fő jellemzők
 
@@ -18,15 +19,30 @@ Statikus site, build lépés és külső függőség nélkül — bármilyen tá
 ## Szerkezet
 
 ```
-index.html          — a teljes oldal (hero, szolgáltatások, rólunk, folyamat,
+index.html          — főoldal (hero, szolgáltatások, rólunk, folyamat,
                       referenciák, CTA, kapcsolat, lábléc)
+
+Aloldalak (teljes szöveges tartalommal, GYIK-kel):
+  orzes-vedelem.html          — Őrzés-védelem
+  szemelyvedelem.html         — Személyvédelem
+  rendezvenybiztositas.html   — Rendezvénybiztosítás
+  koveteleskezeles.html       — Követeléskezelés
+  magannyomozas.html          — Magánnyomozás
+  birtokvedelem.html          — Birtokvédelem
+  rolunk.html                 — Rólunk
+  kapcsolat.html              — Kapcsolat (űrlappal)
+
 css/style.css       — dizájn (CSS-változókkal, téma-támogatással)
-js/hero3d.js        — 3D részecske-pajzs a hero-ban
-js/main.js          — navigáció, téma, animációk, űrlap
+js/hero3d.js        — 3D részecske-pajzs a hero-ban (csak a főoldalon)
+js/main.js          — navigáció, téma, animációk, űrlap (minden oldalon)
 assets/logo-light.svg  — fehér logó (sötét háttérre)
 assets/logo-dark.svg   — sötét logó (világos háttérre)
 assets/favicon.svg     — arany favicon
+tools/build-pages.mjs  — aloldal-generátor (tartalom + sablon egy helyen)
 ```
+
+Az aloldalak a `tools/build-pages.mjs` scriptből generálódnak — szövegmódosításhoz
+a scriptben lévő tartalmat szerkessze, majd futtassa: `node tools/build-pages.mjs`.
 
 ## Futtatás
 
@@ -39,8 +55,8 @@ python3 -m http.server 8000
 
 ## Testreszabás
 
-- **Elérhetőségek**: az `index.html`-ben a `+36 30 000 0000` és az
-  `info@privatezonesecurity.hu` helykitöltők — cserélje a valós adatokra
-  (a kapcsolati űrlap `mailto:` címét a `js/main.js`-ben is).
+- **Elérhetőségek**: a telefonszám (`+36 30 397 6916`) az `index.html`-ben és a
+  `tools/build-pages.mjs` tetején (`PHONE_DISPLAY` / `PHONE_TEL`) módosítható;
+  az e-mail (`info@privatezonesecurity.hu`) ugyanott és a `js/main.js`-ben.
 - **Színek**: a `css/style.css` elején lévő CSS-változókban (`--gold`, `--bg`, …).
 - **Statisztikák**: az `index.html` `data-count` attribútumaiban.
