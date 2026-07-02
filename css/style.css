@@ -444,10 +444,9 @@ h3 { font-size: 1.3rem; }
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1.6rem;
 }
-/* kiemelt (zászlóshajó) szolgáltatások — hangsúlyos, kéthasábos sor */
-/* kiemelt szolgáltatások + videók egymás mellett (asztali) */
+/* kiemelt szolgáltatások + videók egymás mellett (asztali) — videók balra */
 .featured-layout {
-  display: grid; grid-template-columns: 1.15fr .85fr;
+  display: grid; grid-template-columns: 1fr 1fr;
   gap: clamp(1.6rem, 4vw, 3.2rem);
   align-items: center;
   margin-bottom: 1.6rem;
@@ -461,12 +460,13 @@ h3 { font-size: 1.3rem; }
 /* két álló (9:16) videó — egymás mellett, az egyik magasabban, kis átfedéssel */
 .featured-videos {
   position: relative;
+  order: -1;                 /* asztali nézetben balra kerül */
   display: flex; justify-content: center; align-items: flex-start;
   padding: 1rem 0;
 }
 .featured-videos .vid {
   position: relative;
-  width: 48%; max-width: 240px;
+  width: 50%; max-width: 300px;
   aspect-ratio: 9 / 16;
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow);
@@ -788,7 +788,7 @@ h3 { font-size: 1.3rem; }
   /* kiemelt kártyák egymás mellett, a videók alattuk (tablet/telefon) */
   .featured-layout { grid-template-columns: 1fr; gap: 1.6rem; }
   .featured-cards { grid-template-columns: repeat(2, 1fr); }
-  .featured-videos { padding-top: .5rem; }
+  .featured-videos { order: 0; padding-top: .5rem; }   /* a kártyák alá kerül */
   .featured-videos .vid { max-width: 200px; }
 }
 
