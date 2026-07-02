@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="hu" data-theme="dark">
+<html lang="hu" data-theme="dark" data-title-hu="Személyvédelem — Private Zone Security" data-title-en="Személyvédelem — Private Zone Security">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-lang',(function(){try{var s=localStorage.getItem('pzs-lang');if(s==='hu'||s==='en')return s;var l=navigator.languages||[navigator.language||''];return [].some.call(l,function(x){return /^hu/i.test(x)})?'hu':'en'}catch(e){return 'hu'}})());</script>
   <title>Személyvédelem — Private Zone Security</title>
   <meta name="description" content="VIP testőrszolgálat és személyvédelem: kísérés, rezidenciavédelem, utazásbiztosítás, családvédelem — diszkrét, képzett testőrökkel a Private Zone Security-től.">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -26,32 +27,33 @@
       <nav class="nav-links" id="navLinks" aria-label="Fő navigáció">
         <div class="has-dropdown">
           <button class="dropdown-toggle active" aria-haspopup="true" aria-expanded="false">
-            Szolgáltatások
+            <span data-i18n="nav.services">Szolgáltatások</span>
             <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="dropdown">
             <div class="dropdown-inner">
-              <a href="orzes-vedelem.html">Őrzés-védelem</a>
-              <a href="koveteleskezeles.html">Követeléskezelés</a>
-              <a href="szemelyvedelem.html" class="active">Személyvédelem</a>
-              <a href="rendezvenybiztositas.html">Rendezvénybiztosítás</a>
-              <a href="magannyomozas.html">Magánnyomozás</a>
-              <a href="birtokvedelem.html">Birtokvédelem</a>
+              <a href="orzes-vedelem.html" data-i18n="svc.orzes">Őrzés-védelem</a>
+              <a href="koveteleskezeles.html" data-i18n="svc.koveteles">Követeléskezelés</a>
+              <a href="szemelyvedelem.html" class="active" data-i18n="svc.szemely">Személyvédelem</a>
+              <a href="rendezvenybiztositas.html" data-i18n="svc.rendezveny">Rendezvénybiztosítás</a>
+              <a href="magannyomozas.html" data-i18n="svc.magannyomozas">Magánnyomozás</a>
+              <a href="birtokvedelem.html" data-i18n="svc.birtok">Birtokvédelem</a>
             </div>
           </div>
         </div>
-        <a href="rolunk.html" >Rólunk</a>
-        <a href="index.html#folyamat">Folyamat</a>
-        <a href="index.html#referenciak">Referenciák</a>
-        <a href="kapcsolat.html" >Kapcsolat</a>
+        <a href="rolunk.html"  data-i18n="nav.about">Rólunk</a>
+        <a href="index.html#folyamat" data-i18n="nav.process">Folyamat</a>
+        <a href="index.html#referenciak" data-i18n="nav.references">Referenciák</a>
+        <a href="kapcsolat.html"  data-i18n="nav.contact">Kapcsolat</a>
       </nav>
 
       <div class="nav-actions">
+        <button class="lang-toggle" data-lang-toggle aria-label="Language">EN</button>
         <button class="theme-toggle" id="themeToggle" aria-label="Világos / sötét mód váltása">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
         </button>
-        <a href="kapcsolat.html" class="btn btn-gold btn-nav">Ajánlatkérés</a>
+        <a href="kapcsolat.html" class="btn btn-gold btn-nav" data-i18n="nav.cta">Ajánlatkérés</a>
         <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -220,12 +222,12 @@
       <div class="container">
         <div class="glass cta-panel reveal">
           <div>
-            <h2>Az Ön privát zónája<br><span class="gold-text">egy hívásra van.</span></h2>
-            <p>Bizalmas konzultáció, 24 órán belüli visszajelzés.</p>
+            <h2 data-i18n-html="cta.h">Az Ön privát zónája<br><span class="gold-text">egy hívásra van.</span></h2>
+            <p data-i18n="cta.sub">Bizalmas konzultáció, 24 órán belüli visszajelzés.</p>
           </div>
           <div class="cta-actions">
             <a href="tel:+36303976916" class="btn btn-gold">+36 30 397 6916</a>
-            <a href="kapcsolat.html" class="btn btn-ghost">Írjon nekünk</a>
+            <a href="kapcsolat.html" class="btn btn-ghost" data-i18n="cta.write">Írjon nekünk</a>
           </div>
         </div>
       </div>
@@ -237,29 +239,32 @@
       <div class="footer-brand">
         <img src="assets/logo-light.png" alt="Private Zone Security logó" class="footer-logo logo-on-dark">
         <img src="assets/logo-dark.png" alt="Private Zone Security logó" class="footer-logo logo-on-light">
-        <p><strong>PRIVATE ZONE SECURITY</strong><br>Diszkréció. Elegancia. Biztonság.</p>
-        <p style="margin-top:.6rem">Panorama Office irodaház<br>1024 Budapest, Ady Endre utca 19</p>
+        <p><strong>PRIVATE ZONE SECURITY</strong><br><span data-i18n="footer.tagline">Diszkréció. Elegancia. Biztonság.</span></p>
+        <p style="margin-top:.6rem"><span data-i18n="footer.addr1">Panorama Office irodaház</span><br><span data-i18n="footer.addr2">1024 Budapest, Ady Endre utca 19</span></p>
         <p style="margin-top:.4rem"><a href="tel:+36303976916" style="color:inherit;text-decoration:none">+36 30 397 6916</a></p>
       </div>
       <nav class="footer-nav" aria-label="Lábléc navigáció">
-        <a href="orzes-vedelem.html">Őrzés-védelem</a>
-        <a href="koveteleskezeles.html">Követeléskezelés</a>
-        <a href="szemelyvedelem.html">Személyvédelem</a>
-        <a href="rendezvenybiztositas.html">Rendezvénybiztosítás</a>
-        <a href="magannyomozas.html">Magánnyomozás</a>
-        <a href="birtokvedelem.html">Birtokvédelem</a>
-        <a href="rolunk.html">Rólunk</a>
-        <a href="kapcsolat.html">Kapcsolat</a>
-        <a href="aszf.html">ÁSZF</a>
-        <a href="adatvedelem.html">Adatvédelem</a>
+        <a href="orzes-vedelem.html" data-i18n="svc.orzes">Őrzés-védelem</a>
+        <a href="koveteleskezeles.html" data-i18n="svc.koveteles">Követeléskezelés</a>
+        <a href="szemelyvedelem.html" data-i18n="svc.szemely">Személyvédelem</a>
+        <a href="rendezvenybiztositas.html" data-i18n="svc.rendezveny">Rendezvénybiztosítás</a>
+        <a href="magannyomozas.html" data-i18n="svc.magannyomozas">Magánnyomozás</a>
+        <a href="birtokvedelem.html" data-i18n="svc.birtok">Birtokvédelem</a>
+        <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+        <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
+        <a href="aszf.html" data-i18n="footer.aszf">ÁSZF</a>
+        <a href="adatvedelem.html" data-i18n="footer.privacy">Adatvédelem</a>
       </nav>
       <div class="footer-meta">
-        <p>Hatósági engedéllyel rendelkező személy- és vagyonvédelmi szolgáltató.</p>
-        <p>© <span id="year"></span> Private Zone Security. Minden jog fenntartva.</p>
+        <p data-i18n="footer.note">Hatósági engedéllyel rendelkező személy- és vagyonvédelmi szolgáltató.</p>
+        <p>© <span id="year"></span> Private Zone Security. <span data-i18n="footer.rights">Minden jog fenntartva.</span></p>
       </div>
     </div>
   </footer>
 
+  <script src="js/i18n-dict.js"></script>
+  <script src="js/i18n-pages.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

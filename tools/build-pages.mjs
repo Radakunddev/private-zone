@@ -24,13 +24,32 @@ const LOGO_IMG = `<img src="assets/logo-light.png" alt="" class="logo-on-dark">
 /* ── szolgáltatások listája (menühöz, footerhez, kapcsolódókhoz) ── */
 // Sorrend = fontossági sorrend. Az első kettő a két kiemelt szolgáltatás.
 const SERVICES = [
-  { slug: "orzes-vedelem", name: "Őrzés-védelem" },
-  { slug: "koveteleskezeles", name: "Követeléskezelés" },
-  { slug: "szemelyvedelem", name: "Személyvédelem" },
-  { slug: "rendezvenybiztositas", name: "Rendezvénybiztosítás" },
-  { slug: "magannyomozas", name: "Magánnyomozás" },
-  { slug: "birtokvedelem", name: "Birtokvédelem" },
+  { slug: "orzes-vedelem", name: "Őrzés-védelem", i18n: "svc.orzes" },
+  { slug: "koveteleskezeles", name: "Követeléskezelés", i18n: "svc.koveteles" },
+  { slug: "szemelyvedelem", name: "Személyvédelem", i18n: "svc.szemely" },
+  { slug: "rendezvenybiztositas", name: "Rendezvénybiztosítás", i18n: "svc.rendezveny" },
+  { slug: "magannyomozas", name: "Magánnyomozás", i18n: "svc.magannyomozas" },
+  { slug: "birtokvedelem", name: "Birtokvédelem", i18n: "svc.birtok" },
 ];
+
+/* ── i18n: aloldal-szótár gyűjtő ──
+   T(hu,en) regisztrálja mindkét nyelvet és egy <span data-i18n-html>-t ad
+   vissza (alap: magyar), amit az i18n motor a nyelv szerint kicserél. */
+const PAGE_I18N = { hu: {}, en: {} };
+let _gk = 0;
+function key(hu, en) {
+  const k = "p" + ++_gk;
+  PAGE_I18N.hu[k] = hu;
+  PAGE_I18N.en[k] = en;
+  return k;
+}
+function T(hu, en) {
+  return `<span data-i18n-html="${key(hu, en)}">${hu}</span>`;
+}
+function attr(hu, en) {
+  // data-i18n kulcs sima attribútumhoz (textContent-hez)
+  return `data-i18n="${key(hu, en)}"`;
+}
 
 /* ── közös sablonrészek ── */
 const nav = (active) => {
@@ -49,27 +68,28 @@ const nav = (active) => {
       <nav class="nav-links" id="navLinks" aria-label="Fő navigáció">
         <div class="has-dropdown">
           <button class="dropdown-toggle${inServices ? " active" : ""}" aria-haspopup="true" aria-expanded="false">
-            Szolgáltatások
+            <span data-i18n="nav.services">Szolgáltatások</span>
             <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="dropdown">
             <div class="dropdown-inner">
-              ${SERVICES.map((s) => `<a href="${s.slug}.html"${active === s.slug ? ' class="active"' : ""}>${s.name}</a>`).join("\n              ")}
+              ${SERVICES.map((s) => `<a href="${s.slug}.html"${active === s.slug ? ' class="active"' : ""} data-i18n="${s.i18n}">${s.name}</a>`).join("\n              ")}
             </div>
           </div>
         </div>
-        <a href="rolunk.html" ${active === "rolunk" ? 'class="active"' : ""}>Rólunk</a>
-        <a href="index.html#folyamat">Folyamat</a>
-        <a href="index.html#referenciak">Referenciák</a>
-        <a href="kapcsolat.html" ${active === "kapcsolat" ? 'class="active"' : ""}>Kapcsolat</a>
+        <a href="rolunk.html" ${active === "rolunk" ? 'class="active"' : ""} data-i18n="nav.about">Rólunk</a>
+        <a href="index.html#folyamat" data-i18n="nav.process">Folyamat</a>
+        <a href="index.html#referenciak" data-i18n="nav.references">Referenciák</a>
+        <a href="kapcsolat.html" ${active === "kapcsolat" ? 'class="active"' : ""} data-i18n="nav.contact">Kapcsolat</a>
       </nav>
 
       <div class="nav-actions">
+        <button class="lang-toggle" data-lang-toggle aria-label="Language">EN</button>
         <button class="theme-toggle" id="themeToggle" aria-label="Világos / sötét mód váltása">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
         </button>
-        <a href="kapcsolat.html" class="btn btn-gold btn-nav">Ajánlatkérés</a>
+        <a href="kapcsolat.html" class="btn btn-gold btn-nav" data-i18n="nav.cta">Ajánlatkérés</a>
         <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -84,20 +104,20 @@ const footer = `
       <div class="footer-brand">
         <img src="assets/logo-light.png" alt="Private Zone Security logó" class="footer-logo logo-on-dark">
         <img src="assets/logo-dark.png" alt="Private Zone Security logó" class="footer-logo logo-on-light">
-        <p><strong>PRIVATE ZONE SECURITY</strong><br>Diszkréció. Elegancia. Biztonság.</p>
-        <p style="margin-top:.6rem">${ADDRESS_L1}<br>${ADDRESS_L2}</p>
+        <p><strong>PRIVATE ZONE SECURITY</strong><br><span data-i18n="footer.tagline">Diszkréció. Elegancia. Biztonság.</span></p>
+        <p style="margin-top:.6rem"><span data-i18n="footer.addr1">${ADDRESS_L1}</span><br><span data-i18n="footer.addr2">${ADDRESS_L2}</span></p>
         <p style="margin-top:.4rem"><a href="tel:${PHONE_TEL}" style="color:inherit;text-decoration:none">${PHONE_DISPLAY}</a></p>
       </div>
       <nav class="footer-nav" aria-label="Lábléc navigáció">
-        ${SERVICES.map((s) => `<a href="${s.slug}.html">${s.name}</a>`).join("\n        ")}
-        <a href="rolunk.html">Rólunk</a>
-        <a href="kapcsolat.html">Kapcsolat</a>
-        <a href="aszf.html">ÁSZF</a>
-        <a href="adatvedelem.html">Adatvédelem</a>
+        ${SERVICES.map((s) => `<a href="${s.slug}.html" data-i18n="${s.i18n}">${s.name}</a>`).join("\n        ")}
+        <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+        <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
+        <a href="aszf.html" data-i18n="footer.aszf">ÁSZF</a>
+        <a href="adatvedelem.html" data-i18n="footer.privacy">Adatvédelem</a>
       </nav>
       <div class="footer-meta">
-        <p>Hatósági engedéllyel rendelkező személy- és vagyonvédelmi szolgáltató.</p>
-        <p>© <span id="year"></span> Private Zone Security. Minden jog fenntartva.</p>
+        <p data-i18n="footer.note">Hatósági engedéllyel rendelkező személy- és vagyonvédelmi szolgáltató.</p>
+        <p>© <span id="year"></span> Private Zone Security. <span data-i18n="footer.rights">Minden jog fenntartva.</span></p>
       </div>
     </div>
   </footer>`;
@@ -107,22 +127,23 @@ const ctaBand = `
       <div class="container">
         <div class="glass cta-panel reveal">
           <div>
-            <h2>Az Ön privát zónája<br><span class="gold-text">egy hívásra van.</span></h2>
-            <p>Bizalmas konzultáció, 24 órán belüli visszajelzés.</p>
+            <h2 data-i18n-html="cta.h">Az Ön privát zónája<br><span class="gold-text">egy hívásra van.</span></h2>
+            <p data-i18n="cta.sub">Bizalmas konzultáció, 24 órán belüli visszajelzés.</p>
           </div>
           <div class="cta-actions">
             <a href="tel:${PHONE_TEL}" class="btn btn-gold">${PHONE_DISPLAY}</a>
-            <a href="kapcsolat.html" class="btn btn-ghost">Írjon nekünk</a>
+            <a href="kapcsolat.html" class="btn btn-ghost" data-i18n="cta.write">Írjon nekünk</a>
           </div>
         </div>
       </div>
     </section>`;
 
-const page = ({ title, desc, active, body, noCta }) => `<!DOCTYPE html>
-<html lang="hu" data-theme="dark">
+const page = ({ title, titleEn, desc, active, body, noCta }) => `<!DOCTYPE html>
+<html lang="hu" data-theme="dark" data-title-hu="${title} — Private Zone Security" data-title-en="${(titleEn || title)} — Private Zone Security">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-lang',(function(){try{var s=localStorage.getItem('pzs-lang');if(s==='hu'||s==='en')return s;var l=navigator.languages||[navigator.language||''];return [].some.call(l,function(x){return /^hu/i.test(x)})?'hu':'en'}catch(e){return 'hu'}})());</script>
   <title>${title} — Private Zone Security</title>
   <meta name="description" content="${desc}">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -139,6 +160,9 @@ ${noCta ? "" : ctaBand}
   </main>
 ${footer}
 
+  <script src="js/i18n-dict.js"></script>
+  <script src="js/i18n-pages.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
@@ -887,3 +911,13 @@ writeFileSync(join(ROOT, "aszf.html"), aszf);
 console.log("✓ aszf.html");
 writeFileSync(join(ROOT, "adatvedelem.html"), adatvedelem);
 console.log("✓ adatvedelem.html");
+
+// az aloldalak összegyűjtött fordításai
+writeFileSync(
+  join(ROOT, "js/i18n-pages.js"),
+  "/* Generált aloldal-fordítások — ne szerkeszd kézzel! Forrás: tools/build-pages.mjs */\n" +
+    "window.I18N_PAGES = " +
+    JSON.stringify(PAGE_I18N, null, 0) +
+    ";\n"
+);
+console.log(`✓ js/i18n-pages.js (${Object.keys(PAGE_I18N.hu).length} kulcs)`);

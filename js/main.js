@@ -138,16 +138,24 @@
   if (form) form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (!form.reportValidity()) return;
+    const en = document.documentElement.getAttribute("data-lang") === "en";
     const d = new FormData(form);
     const subject = encodeURIComponent(
-      `Ajánlatkérés — ${d.get("service") || "általános megkeresés"}`
+      en
+        ? `Quote request — ${d.get("service") || "general enquiry"}`
+        : `Ajánlatkérés — ${d.get("service") || "általános megkeresés"}`
     );
     const body = encodeURIComponent(
-      `Név: ${d.get("name")}\nTelefon: ${d.get("phone") || "-"}\nE-mail: ${d.get("email")}\n` +
-      `Szolgáltatás: ${d.get("service") || "-"}\n\nÜzenet:\n${d.get("message")}`
+      en
+        ? `Name: ${d.get("name")}\nPhone: ${d.get("phone") || "-"}\nEmail: ${d.get("email")}\n` +
+          `Service: ${d.get("service") || "-"}\n\nMessage:\n${d.get("message")}`
+        : `Név: ${d.get("name")}\nTelefon: ${d.get("phone") || "-"}\nE-mail: ${d.get("email")}\n` +
+          `Szolgáltatás: ${d.get("service") || "-"}\n\nÜzenet:\n${d.get("message")}`
     );
     window.location.href = `mailto:info@privatezonesecurity.hu?subject=${subject}&body=${body}`;
-    status.textContent = "Köszönjük! A levelezőprogramja megnyílt az előkészített üzenettel.";
+    status.textContent = en
+      ? "Thank you! Your email client has opened with the prepared message."
+      : "Köszönjük! A levelezőprogramja megnyílt az előkészített üzenettel.";
     form.reset();
   });
 
