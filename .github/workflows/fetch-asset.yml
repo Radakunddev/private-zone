@@ -1,0 +1,43 @@
+name: Fetch remote asset
+
+# Kézzel indítható segéd-workflow: egy megadott URL-ről letölt egy fájlt
+# és becommitolja a repóba (pl. generált 3D modell, kép beemelése).
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Forrás URL"
+        required: true
+        type: string
+      path:
+        description: "Cél útvonal a repóban (pl. assets/models/model.glb)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download asset
+        env:
+          SRC_URL: ${{ inputs.url }}
+          DEST_PATH: ${{ inputs.path }}
+        run: |
+          mkdir -p "$(dirname "$DEST_PATH")"
+          curl -fSL --retry 3 "$SRC_URL" -o "$DEST_PATH"
+          ls -la "$DEST_PATH"
+
+      - name: Commit and push
+        env:
+          DEST_PATH: ${{ inputs.path }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST_PATH"
+          git commit -m "Letöltött asset hozzáadása: $DEST_PATH"
+          git push
