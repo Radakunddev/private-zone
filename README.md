@@ -8,10 +8,10 @@ Betűtípus: Helvetica webfontként beépítve (Regular a törzsszöveghez, Bold
 
 - **3D hero** — valódi, interaktív 3D öltönyös biztonsági őr (manöken) modell a nyitóképernyőn:
   automatikusan forog, desktopon egérrel is forgatható (`assets/models/bodyguard.glb`,
-  lokálisan vendorolt `model-viewer` komponenssel). Mögötte finom aranypor-animáció
+  lokálisan vendorolt `model-viewer` komponenssel). Mögötte finom por-animáció (off-white/charcoal)
   (saját, függőség nélküli canvas).
 - **Aurora háttéreffekt** — a React Bits `<Aurora />` komponens hűséges vanilla WebGL2 portja
-  (`js/aurora.js`), a brand arany-krém színeivel a hero hátterében. Ugyanazok a shaderek és
+  (`js/aurora.js`), a brand off-white/charcoal színeivel a hero hátterében. Ugyanazok a shaderek és
   prop-ok (colorStops, speed, blend, amplitude), de React és `ogl` függőség nélkül.
 - **Glassmorphism** — üveghatású kártyák, panelek és navigáció (`backdrop-filter`).
 - **Világos / sötét téma** — kapcsolóval, a választás mentésre kerül (`localStorage`),
@@ -38,7 +38,7 @@ Aloldalak (teljes szöveges tartalommal, GYIK-kel):
 
 css/style.css       — dizájn (CSS-változókkal, téma-támogatással)
 js/aurora.js        — Aurora WebGL2 háttéreffekt (React Bits port, csak a főoldalon)
-js/hero3d.js        — aranypor háttér-animáció a hero-ban (csak a főoldalon)
+js/hero3d.js        — por-háttéranimáció a hero-ban (off-white/charcoal, csak a főoldalon)
 js/main.js          — navigáció, téma, animációk, űrlap (minden oldalon)
 assets/models/bodyguard.glb — a hero 3D öltönyös alakja (glTF binary)
 assets/js/model-viewer.min.js — Google model-viewer webkomponens (Apache-2.0, vendorolt)
@@ -66,5 +66,5 @@ python3 -m http.server 8000
 - **Elérhetőségek**: a telefonszám (`+36 30 397 6916`) az `index.html`-ben és a
   `tools/build-pages.mjs` tetején (`PHONE_DISPLAY` / `PHONE_TEL`) módosítható;
   az e-mail (`info@privatezonesecurity.hu`) ugyanott és a `js/main.js`-ben.
-- **Színek**: a `css/style.css` elején lévő CSS-változókban (`--gold`, `--bg`, …).
+- **Színek**: a `css/style.css` elején lévő CSS-változókban (az akcent a `--gold*`/`--gold-rgb` — jelenleg monokróm charcoal/off-white, témánként; `--bg`, `--ink`, …).
 - **Statisztikák**: az `index.html` `data-count` attribútumaiban.

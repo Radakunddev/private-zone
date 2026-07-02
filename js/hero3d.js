@@ -18,7 +18,8 @@
   function readPalette() {
     const light = document.documentElement.dataset.theme === "light";
     return {
-      gold: light ? "201,162,75" : "212,175,106",
+      // monokróm akcent: charcoal világoson, off-white sötéten
+      gold: light ? "43,47,54" : "233,228,217",
       dustAlpha: light ? 0.3 : 0.42,
     };
   }
