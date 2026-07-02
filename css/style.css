@@ -130,6 +130,9 @@ h3 { font-size: 1.3rem; }
   background: linear-gradient(100deg, var(--gold-deep), var(--gold-light) 45%, var(--gold));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
+  /* a dőlt glyph jobbra túlnyúlik — hely a levágás elkerülésére */
+  padding-right: .12em;
+  margin-right: -.06em;
 }
 
 .lead { font-size: 1.1rem; color: var(--ink-soft); max-width: 34rem; margin-top: 1.4rem; }
