@@ -15,6 +15,10 @@ Bold Oblique a színnel is kiemelt, dőlt szavakhoz).
   (`js/aurora.js`), a brand off-white/charcoal színeivel a hero hátterében. Ugyanazok a shaderek és
   prop-ok (colorStops, speed, blend, amplitude), de React és `ogl` függőség nélkül.
 - **Glassmorphism** — üveghatású kártyák, panelek és navigáció (`backdrop-filter`).
+- **Kétnyelvűség (HU / EN)** — teljes magyar és angol tartalom, kulcs alapú i18n motorral
+  (`js/i18n.js` + `js/i18n-dict.js` a főoldalhoz/közös elemekhez, `js/i18n-pages.js` a
+  generált aloldalakhoz). Automatikus nyelvfelismerés a böngésző nyelvéből (magyar
+  látogató → HU, minden más → EN), kézi HU/EN váltóval, `localStorage`-ban mentve.
 - **Világos / sötét téma** — kapcsolóval, a választás mentésre kerül (`localStorage`),
   a logó automatikusan vált a light/dark változat között.
 - **Mikrointerakciók** — 3D tilt a szolgáltatáskártyákon, animált számlálók,

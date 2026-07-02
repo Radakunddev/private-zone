@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu" data-theme="dark" data-title-hu="Kapcsolat — Private Zone Security" data-title-en="Kapcsolat — Private Zone Security">
+<html lang="hu" data-theme="dark" data-title-hu="Kapcsolat — Private Zone Security" data-title-en="Contact — Private Zone Security">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,13 +67,12 @@
       <div class="container">
 
         <nav class="breadcrumb" aria-label="Morzsamenü">
-          <a href="index.html">Főoldal</a><span class="sep">/</span>
-          <strong>Kapcsolat</strong>
+          <a href="index.html"><span data-i18n-html="p34">Főoldal</span></a><span class="sep">/</span>
+          <strong><span data-i18n-html="p35">Kapcsolat</span></strong>
         </nav>
-        <p class="overline reveal">Kapcsolat</p>
-        <h1 class="reveal d1">Kezdjük egy<br><span class="gold-text">bizalmas</span> beszélgetéssel.</h1>
-        <p class="lead reveal d2">Minden megkeresést szigorúan bizalmasan kezelünk. Hívjon minket a nap
-        bármely órájában, vagy írjon — munkatársunk 24 órán belül jelentkezik.</p>
+        <p class="overline reveal" data-i18n="contact.overline">Kapcsolat</p>
+        <h1 class="reveal d1"><span data-i18n-html="p36">Kezdjük egy<br><span class="gold-text">bizalmas</span> beszélgetéssel.</span></h1>
+        <p class="lead reveal d2"><span data-i18n-html="p37">Minden megkeresést szigorúan bizalmasan kezelünk. Hívjon minket a nap bármely órájában, vagy írjon — munkatársunk 24 órán belül jelentkezik.</span></p>
       </div>
     </section>
 
@@ -83,29 +82,29 @@
           <ul class="contact-list reveal">
             <li>
               <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
-              <div><strong>Telefon</strong><a href="tel:+36303976916">+36 30 397 6916</a></div>
+              <div><strong data-i18n="contact.phone">Telefon</strong><a href="tel:+36303976916">+36 30 397 6916</a></div>
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-              <div><strong>E-mail</strong><a href="mailto:info@privatezonesecurity.hu">info@privatezonesecurity.hu</a></div>
+              <div><strong data-i18n="contact.email">E-mail</strong><a href="mailto:info@privatezonesecurity.hu">info@privatezonesecurity.hu</a></div>
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
-              <div><strong>Iroda</strong><span>Panorama Office irodaház<br>1024 Budapest, Ady Endre utca 19</span></div>
+              <div><strong data-i18n="contact.office">Iroda</strong><span data-i18n-html="contact.office_addr">Panorama Office irodaház<br>1024 Budapest, Ady Endre utca 19</span></div>
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
-              <div><strong>Elérhetőség</strong><span>24/7 — az év minden napján</span></div>
+              <div><strong data-i18n="contact.avail_label">Elérhetőség</strong><span data-i18n="contact.avail">24/7 — az év minden napján</span></div>
             </li>
           </ul>
 
           <div class="glass facts reveal d1" style="margin-top:2rem;position:static">
-            <h3>Az első konzultáció</h3>
+            <h3><span data-i18n-html="p38">Az első konzultáció</span></h3>
             <ul>
-              <li>Díjmentes és kötelezettség nélküli</li>
-              <li>Személyesen, telefonon vagy videóhívásban</li>
-              <li>Titoktartás már az első szótól</li>
-              <li>Őszinte válasz: ha nem mi vagyunk a megoldás, azt is megmondjuk</li>
+              <li><span data-i18n-html="p39">Díjmentes és kötelezettség nélküli</span></li>
+              <li><span data-i18n-html="p40">Személyesen, telefonon vagy videóhívásban</span></li>
+              <li><span data-i18n-html="p41">Titoktartás már az első szótól</span></li>
+              <li><span data-i18n-html="p42">Őszinte válasz: ha nem mi vagyunk a megoldás, azt is megmondjuk</span></li>
             </ul>
           </div>
         </div>
@@ -113,37 +112,37 @@
         <form class="glass contact-form reveal d2" id="contactForm" novalidate>
           <div class="form-row">
             <div class="field">
-              <label for="fName">Név *</label>
-              <input id="fName" name="name" type="text" required autocomplete="name" placeholder="Az Ön neve">
+              <label for="fName" data-i18n="form.name">Név *</label>
+              <input id="fName" name="name" type="text" required autocomplete="name" placeholder="Az Ön neve" data-i18n="form.name_ph" data-i18n-attr="placeholder">
             </div>
             <div class="field">
-              <label for="fPhone">Telefon</label>
+              <label for="fPhone" data-i18n="form.phone">Telefon</label>
               <input id="fPhone" name="phone" type="tel" autocomplete="tel" placeholder="+36 …">
             </div>
           </div>
           <div class="field">
-            <label for="fEmail">E-mail *</label>
-            <input id="fEmail" name="email" type="email" required autocomplete="email" placeholder="pelda@email.hu">
+            <label for="fEmail" data-i18n="form.email">E-mail *</label>
+            <input id="fEmail" name="email" type="email" required autocomplete="email" placeholder="pelda@email.hu" data-i18n="form.email_ph" data-i18n-attr="placeholder">
           </div>
           <div class="field">
-            <label for="fService">Szolgáltatás</label>
+            <label for="fService" data-i18n="form.service">Szolgáltatás</label>
             <select id="fService" name="service">
-              <option value="">Válasszon…</option>
-              <option>Őrzés-védelem</option>
-              <option>Követeléskezelés</option>
-              <option>Személyvédelem</option>
-              <option>Rendezvénybiztosítás</option>
-              <option>Magánnyomozás</option>
-              <option>Birtokvédelem</option>
-              <option>Egyéb / összetett megbízás</option>
+              <option value="" data-i18n="form.choose">Válasszon…</option>
+              <option data-i18n="svc.orzes">Őrzés-védelem</option>
+              <option data-i18n="svc.koveteles">Követeléskezelés</option>
+              <option data-i18n="svc.szemely">Személyvédelem</option>
+              <option data-i18n="svc.rendezveny">Rendezvénybiztosítás</option>
+              <option data-i18n="svc.magannyomozas">Magánnyomozás</option>
+              <option data-i18n="svc.birtok">Birtokvédelem</option>
+              <option data-i18n="form.other">Egyéb / összetett megbízás</option>
             </select>
           </div>
           <div class="field">
-            <label for="fMsg">Üzenet *</label>
-            <textarea id="fMsg" name="message" rows="4" required placeholder="Írja le röviden, miben segíthetünk…"></textarea>
+            <label for="fMsg" data-i18n="form.message">Üzenet *</label>
+            <textarea id="fMsg" name="message" rows="4" required placeholder="Írja le röviden, miben segíthetünk…" data-i18n="form.message_ph" data-i18n-attr="placeholder"></textarea>
           </div>
-          <p class="form-note">Üzenetét bizalmasan kezeljük, harmadik félnek nem adjuk ki.</p>
-          <button type="submit" class="btn btn-gold btn-block">Bizalmas üzenet küldése</button>
+          <p class="form-note" data-i18n="form.note">Üzenetét bizalmasan kezeljük, harmadik félnek nem adjuk ki.</p>
+          <button type="submit" class="btn btn-gold btn-block" data-i18n="form.submit">Bizalmas üzenet küldése</button>
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
       </div>
