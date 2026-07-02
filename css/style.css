@@ -130,8 +130,11 @@ h3 { font-size: 1.3rem; }
   background: linear-gradient(100deg, var(--gold-deep), var(--gold-light) 45%, var(--gold));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
-  /* a dőlt glyph jobbra túlnyúlik — hely a levágás elkerülésére */
-  padding-right: .12em;
+  /* a background-clip: text az inline dobozra vág — a dőlt glyph jobbra,
+     a nagybetűs ékezet (Ö, Ő) felfelé túlnyúlik; a padding festési
+     területet ad nekik (inline elemnél a függőleges padding nem tolja
+     el a sorokat) */
+  padding: .22em .12em .08em 0;
   margin-right: -.06em;
 }
 

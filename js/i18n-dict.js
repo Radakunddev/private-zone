@@ -29,19 +29,19 @@ window.I18N = {
     "footer.rights": "Minden jog fenntartva.",
 
     /* — CTA sáv — */
-    "cta.h": 'Az Ön privát zónája<br><span class="gold-text">egy hívásra van.</span>',
-    "cta.sub": "Bizalmas konzultáció, 24 órán belüli visszajelzés.",
+    "cta.h": 'Lejárt követelése van?<br><span class="gold-text">Egy hívással elindítjuk.</span>',
+    "cta.sub": "Ingyenes, bizalmas előminősítés — 24 órán belüli visszajelzéssel.",
     "cta.write": "Írjon nekünk",
 
     /* — hero — */
-    "hero.overline": "Prémium személy- és vagyonvédelem",
-    "hero.h1": 'Diszkrét védelem,<br><span class="gold-text">kompromisszumok</span> nélkül.',
-    "hero.lead": "A Private Zone Security ott van, ahol a biztonság nem lehet kérdés — láthatatlanul, elegánsan, a nap huszonnégy órájában. Vagyon, rendezvény, család: nálunk minden érték privát zónába kerül.",
-    "hero.cta1": "Kérjen ajánlatot",
+    "hero.overline": "Követeléskezelés — diszkréten, jogszerűen",
+    "hero.h1": 'Behajtjuk, ami<br><span class="gold-text">Önnek jár</span>.',
+    "hero.lead": "Lejárt számla, elérhetetlen adós? A Private Zone Security a fizetési felszólítástól a peren kívüli megállapodásig jogszerűen, botrány nélkül érvényesíti követelését — akár sikerdíjas konstrukcióban. Emellett a személy- és vagyonvédelem teljes spektrumát lefedjük.",
+    "hero.cta1": "Ingyenes előminősítés",
     "hero.cta2": "Szolgáltatásaink",
-    "hero.badge1": "• Hatósági engedéllyel",
+    "hero.badge1": "• Sikerdíjas konstrukció is",
     "hero.badge2": "• Teljes diszkréció",
-    "hero.badge3": "• 24/7 rendelkezésre állás",
+    "hero.badge3": "• 24 órán belüli visszajelzés",
 
     /* — statisztika — */
     "stats.years": "év tapasztalat",
@@ -52,10 +52,11 @@ window.I18N = {
     /* — szolgáltatások szekció — */
     "services.overline": "Amit nyújtunk",
     "services.title": "Szolgáltatásaink",
-    "services.sub": 'Két területen vagyunk a legerősebbek — az <strong>őrzés-védelemben</strong> és a <strong>követeléskezelésben</strong>. Emellett a személy- és vagyonvédelem, valamint a jogérvényesítés teljes spektrumát lefedjük.',
+    "services.sub": 'Fő szakterületünk a <strong>követeléskezelés</strong> — emellett <strong>őrzés-védelemmel</strong>, valamint a személy- és vagyonvédelem teljes spektrumával állunk rendelkezésre.',
     "badge.featured": "Kiemelt szolgáltatás",
-    "services.orzes.desc": "Zászlóshajó szolgáltatásunk: élőerős objektum- és vagyonvédelem irodaházak, telephelyek és magánbirtokok részére. Portaszolgálat, járőrözés, recepciós biztonsági szolgálat — képzett, egyenruhás vagy civil ruhás állománnyal, az Ön igénye szerint.",
-    "services.koveteles.desc": "Kiemelt szakterületünk: lejárt tartozások diszkrét és jogszerű kezelése a fizetési felszólítástól a peren kívüli megállapodáson át a jogi eljárás előkészítéséig — cégek és magánszemélyek részére, akár sikerdíjas konstrukcióban is.",
+    "badge.primary": "Fő szakterületünk",
+    "services.orzes.desc": "Élőerős objektum- és vagyonvédelem irodaházak, telephelyek és magánbirtokok részére. Portaszolgálat, járőrözés, recepciós biztonsági szolgálat — képzett, egyenruhás vagy civil ruhás állománnyal, az Ön igénye szerint.",
+    "services.koveteles.desc": "Lejárt tartozások diszkrét és jogszerű kezelése a fizetési felszólítástól a peren kívüli megállapodáson át a jogi eljárás előkészítéséig — cégek és magánszemélyek részére, akár sikerdíjas konstrukcióban. Az előminősítés ingyenes és bizalmas.",
     "services.szemely.desc": "VIP testőrszolgálat üzletembereknek, közszereplőknek és családoknak. Előzetes útvonal-felderítés, kísérés, rezidenciavédelem — észrevétlen jelenléttel.",
     "services.rendezveny.desc": "Gálák, esküvők, konferenciák és zártkörű események teljes körű biztosítása. Beléptetés, tömegirányítás, VIP-vendégek kísérése — elegáns megjelenéssel.",
     "services.magannyomozas.desc": "Információ- és bizonyítékgyűjtés kizárólag törvényes eszközökkel: háttérellenőrzés, megfigyelés, céges visszaélések feltárása, eltűnt személyek felkutatása.",
@@ -119,7 +120,7 @@ window.I18N = {
     "form.sent": "Köszönjük! A levelezőprogramja megnyílt az előkészített üzenettel.",
 
     /* — dokumentumcím — */
-    "title.index": "Private Zone Security — Prémium személy- és vagyonvédelem",
+    "title.index": "Követeléskezelés Budapesten — Private Zone Security | Diszkrét, jogszerű behajtás",
   },
 
   en: {
@@ -148,19 +149,19 @@ window.I18N = {
     "footer.rights": "All rights reserved.",
 
     /* — CTA band — */
-    "cta.h": 'Your private zone<br><span class="gold-text">is one call away.</span>',
-    "cta.sub": "Confidential consultation, response within 24 hours.",
+    "cta.h": 'Have an overdue claim?<br><span class="gold-text">One call sets it in motion.</span>',
+    "cta.sub": "Free, confidential pre-assessment — with a response within 24 hours.",
     "cta.write": "Write to us",
 
     /* — hero — */
-    "hero.overline": "Premium personal & property protection",
-    "hero.h1": 'Discreet protection,<br><span class="gold-text">without</span> compromise.',
-    "hero.lead": "Private Zone Security is there where safety cannot be a question — invisibly, elegantly, twenty-four hours a day. Property, event, family: with us every valuable enters a private zone.",
-    "hero.cta1": "Request a quote",
+    "hero.overline": "Debt collection — discreet and lawful",
+    "hero.h1": 'We collect what<br>you are <span class="gold-text">owed</span>.',
+    "hero.lead": "An overdue invoice, an unreachable debtor? Private Zone Security enforces your claim lawfully and without scandal — from the payment notice to an out-of-court settlement, success-fee arrangements available. Beyond that, we cover the full spectrum of personal and property protection.",
+    "hero.cta1": "Free pre-assessment",
     "hero.cta2": "Our services",
-    "hero.badge1": "• Officially licensed",
+    "hero.badge1": "• Success-fee available",
     "hero.badge2": "• Full discretion",
-    "hero.badge3": "• 24/7 availability",
+    "hero.badge3": "• Response within 24 hours",
 
     /* — stats — */
     "stats.years": "years of experience",
@@ -171,10 +172,11 @@ window.I18N = {
     /* — services section — */
     "services.overline": "What we offer",
     "services.title": "Our services",
-    "services.sub": 'We are strongest in two areas — <strong>guarding & property protection</strong> and <strong>debt collection</strong>. Beyond these we cover the full spectrum of personal and property security, as well as enforcement of rights.',
+    "services.sub": 'Our core specialty is <strong>debt collection</strong> — complemented by <strong>guarding & property protection</strong> and the full spectrum of personal and property security.',
     "badge.featured": "Featured service",
-    "services.orzes.desc": "Our flagship service: manned property and asset protection for office buildings, sites and private estates. Reception and gate service, patrols, security front-desk — with trained, uniformed or plain-clothes personnel, tailored to your needs.",
-    "services.koveteles.desc": "Our key specialty: discreet and lawful handling of overdue debts, from the payment notice through out-of-court settlement to preparing legal proceedings — for companies and individuals, success-fee arrangements available.",
+    "badge.primary": "Our core specialty",
+    "services.orzes.desc": "Manned property and asset protection for office buildings, sites and private estates. Reception and gate service, patrols, security front-desk — with trained, uniformed or plain-clothes personnel, tailored to your needs.",
+    "services.koveteles.desc": "Discreet and lawful handling of overdue debts, from the payment notice through out-of-court settlement to preparing legal proceedings — for companies and individuals, success-fee arrangements available. The pre-assessment is free and confidential.",
     "services.szemely.desc": "VIP bodyguard service for business people, public figures and families. Advance route reconnaissance, escorting, residence protection — with an unnoticeable presence.",
     "services.rendezveny.desc": "Full security for galas, weddings, conferences and private events. Access control, crowd management, escorting VIP guests — with an elegant appearance.",
     "services.magannyomozas.desc": "Gathering information and evidence solely by lawful means: background checks, surveillance, uncovering corporate abuse, locating missing persons.",
@@ -238,6 +240,6 @@ window.I18N = {
     "form.sent": "Thank you! Your email client has opened with the prepared message.",
 
     /* — document title — */
-    "title.index": "Private Zone Security — Premium personal & property protection",
+    "title.index": "Debt Collection in Budapest — Private Zone Security | Discreet, lawful recovery",
   },
 };

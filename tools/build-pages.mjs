@@ -28,10 +28,10 @@ const LOGO_IMG = `<img src="assets/logo-light.png" alt="" class="logo-on-dark">
           <img src="assets/logo-dark.png" alt="" class="logo-on-light">`;
 
 /* ── szolgáltatások listája (menühöz, footerhez, kapcsolódókhoz) ── */
-// Sorrend = fontossági sorrend. Az első kettő a két kiemelt szolgáltatás.
+// Sorrend = fontossági sorrend. A követeléskezelés a fő szakterület.
 const SERVICES = [
-  { slug: "orzes-vedelem", name: "Őrzés-védelem", i18n: "svc.orzes" },
   { slug: "koveteleskezeles", name: "Követeléskezelés", i18n: "svc.koveteles" },
+  { slug: "orzes-vedelem", name: "Őrzés-védelem", i18n: "svc.orzes" },
   { slug: "szemelyvedelem", name: "Személyvédelem", i18n: "svc.szemely" },
   { slug: "rendezvenybiztositas", name: "Rendezvénybiztosítás", i18n: "svc.rendezveny" },
   { slug: "magannyomozas", name: "Magánnyomozás", i18n: "svc.magannyomozas" },
