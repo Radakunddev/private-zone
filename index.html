@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Zone Security — Prémium személy- és vagyonvédelem</title>
+  <meta name="description" content="Private Zone Security — diszkrét, elegáns és professzionális biztonsági szolgáltatások: őrzés-védelem, személyvédelem, rendezvénybiztosítás, követeléskezelés, magánnyomozás, birtokvédelem. 24/7 rendelkezésre állás.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════ PRELOADER ═══════════ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-mark">
+      <svg viewBox="0 0 512 512" fill="none" aria-hidden="true">
+        <g class="pl-draw" stroke="currentColor" stroke-width="6" fill="none">
+          <path d="M84 104 C 88 262, 146 396, 248 462 L 253 466 L 213 152 Z"/>
+          <path d="M428 104 C 424 262, 366 396, 264 462 L 259 466 L 299 152 Z"/>
+          <path d="M196 96 L 244 113 L 244 139 L 196 150 C 190 132, 190 114, 196 96 Z"/>
+          <path d="M316 96 L 268 113 L 268 139 L 316 150 C 322 132, 322 114, 316 96 Z"/>
+          <path d="M256 110 L 267 126 L 256 142 L 245 126 Z"/>
+        </g>
+      </svg>
+      <span>PRIVATE&nbsp;ZONE</span>
+    </div>
+  </div>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="brand" aria-label="Private Zone Security — kezdőlap">
+        <span class="brand-mark">
+          <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true">
+            <path d="M84 104 C 88 262, 146 396, 248 462 L 253 466 L 213 152 Z"/>
+            <path d="M428 104 C 424 262, 366 396, 264 462 L 259 466 L 299 152 Z"/>
+            <path d="M196 96 L 244 113 L 244 139 L 196 150 C 190 132, 190 114, 196 96 Z"/>
+            <path d="M316 96 L 268 113 L 268 139 L 316 150 C 322 132, 322 114, 316 96 Z"/>
+            <path d="M256 110 L 267 126 L 256 142 L 245 126 Z"/>
+            <path transform="translate(256 216)" d="M0 -20 L4.7 -6.47 L19.02 -6.18 L7.61 2.47 L11.76 16.18 L0 8 L-11.76 16.18 L-7.61 2.47 L-19.02 -6.18 L-4.7 -6.47 Z"/>
+            <path transform="translate(256 296)" d="M0 -20 L4.7 -6.47 L19.02 -6.18 L7.61 2.47 L11.76 16.18 L0 8 L-11.76 16.18 L-7.61 2.47 L-19.02 -6.18 L-4.7 -6.47 Z"/>
+            <path transform="translate(256 376)" d="M0 -20 L4.7 -6.47 L19.02 -6.18 L7.61 2.47 L11.76 16.18 L0 8 L-11.76 16.18 L-7.61 2.47 L-19.02 -6.18 L-4.7 -6.47 Z"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>PRIVATE ZONE</strong>
+          <em>SECURITY</em>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Fő navigáció">
+        <a href="#szolgaltatasok">Szolgáltatások</a>
+        <a href="#rolunk">Rólunk</a>
+        <a href="#folyamat">Folyamat</a>
+        <a href="#referenciak">Referenciák</a>
+        <a href="#kapcsolat">Kapcsolat</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Világos / sötét mód váltása">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        </button>
+        <a href="#kapcsolat" class="btn btn-gold btn-nav">Ajánlatkérés</a>
+        <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero" id="hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="hero-inner container">
+        <div class="hero-copy">
+          <p class="overline reveal">Prémium személy- és vagyonvédelem</p>
+          <h1 class="reveal d1">
+            Diszkrét védelem,<br>
+            <span class="gold-text">kompromisszumok</span> nélkül.
+          </h1>
+          <p class="lead reveal d2">
+            A Private Zone Security ott van, ahol a biztonság nem lehet kérdés —
+            láthatatlanul, elegánsan, a nap huszonnégy órájában. Vagyon, rendezvény,
+            család: nálunk minden érték privát zónába kerül.
+          </p>
+          <div class="hero-cta reveal d3">
+            <a href="#kapcsolat" class="btn btn-gold">Kérjen ajánlatot
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#szolgaltatasok" class="btn btn-ghost">Szolgáltatásaink</a>
+          </div>
+          <div class="hero-badges reveal d4">
+            <span>• Hatósági engedéllyel</span>
+            <span>• Teljes diszkréció</span>
+            <span>• 24/7 rendelkezésre állás</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#stats" class="scroll-hint" aria-label="Görgessen tovább">
+        <span class="mouse"><span class="wheel"></span></span>
+      </a>
+    </section>
+
+    <!-- ═══════════ STATS ═══════════ -->
+    <section class="stats" id="stats">
+      <div class="container">
+        <div class="glass stats-panel reveal">
+          <div class="stat">
+            <span class="stat-num" data-count="15" data-suffix="+">0</span>
+            <span class="stat-label">év tapasztalat</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="500" data-suffix="+">0</span>
+            <span class="stat-label">biztosított rendezvény</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="98" data-suffix="%">0</span>
+            <span class="stat-label">visszatérő ügyfél</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num stat-static">24/7</span>
+            <span class="stat-label">készenlét, az év minden napján</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SZOLGÁLTATÁSOK ═══════════ -->
+    <section class="section services" id="szolgaltatasok">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="overline">Amit nyújtunk</p>
+          <h2>Szolgáltatásaink</h2>
+          <p class="section-sub">Diszkrét és professzionális megoldások a vagyonvédelem,
+          a személyvédelem és a jogérvényesítés teljes spektrumán.</p>
+        </header>
+
+        <div class="cards">
+          <article class="glass card tilt reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 4 5.5v5.2c0 5 3.4 9.2 8 10.8 4.6-1.6 8-5.8 8-10.8V5.5L12 2Z"/><path d="m8.8 12 2.2 2.2 4.4-4.6"/></svg>
+            </div>
+            <h3>Őrzés-védelem</h3>
+            <p>Élőerős objektum- és vagyonvédelem irodaházak, telephelyek, magánbirtokok
+            részére. Képzett, egyenruhás vagy civil ruhás állomány — az Ön igénye szerint.</p>
+            <a class="card-link" href="#kapcsolat">Ajánlatot kérek <span>→</span></a>
+          </article>
+
+          <article class="glass card tilt reveal d1">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 21c.6-4 3.4-6.5 7-6.5s6.4 2.5 7 6.5"/><path d="M17.5 3.5 19 5l2.5-2.5"/></svg>
+            </div>
+            <h3>Személyvédelem</h3>
+            <p>VIP testőrszolgálat üzletembereknek, közszereplőknek és családoknak.
+            Előzetes útvonal-felderítés, kísérés, rezidenciavédelem — észrevétlen jelenléttel.</p>
+            <a class="card-link" href="#kapcsolat">Ajánlatot kérek <span>→</span></a>
+          </article>
+
+          <article class="glass card tilt reveal d2">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v4M16 3v4M8.5 14.5h2.5M13 14.5h2.5M8.5 17.5h2.5"/></svg>
+            </div>
+            <h3>Rendezvénybiztosítás</h3>
+            <p>Gálák, esküvők, konferenciák és zártkörű események teljes körű biztosítása.
+            Beléptetés, tömegirányítás, VIP-vendégek kísérése — elegáns megjelenéssel.</p>
+            <a class="card-link" href="#kapcsolat">Ajánlatot kérek <span>→</span></a>
+          </article>
+
+          <article class="glass card tilt reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3H6a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 6 21h12a1.5 1.5 0 0 0 1.5-1.5V8.5L14 3Z"/><path d="M14 3v5.5h5.5M8.5 13h7M8.5 16.5h4.5"/></svg>
+            </div>
+            <h3>Követeléskezelés</h3>
+            <p>Lejárt tartozások diszkrét és jogszerű kezelése peren kívüli egyeztetéstől a
+            jogi eljárás előkészítéséig — cégek és magánszemélyek részére egyaránt.</p>
+            <a class="card-link" href="#kapcsolat">Ajánlatot kérek <span>→</span></a>
+          </article>
+
+          <article class="glass card tilt reveal d1">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/><path d="M8 10.5h5M10.5 8v5"/></svg>
+            </div>
+            <h3>Magánnyomozás</h3>
+            <p>Információ- és bizonyítékgyűjtés kizárólag törvényes eszközökkel:
+            háttérellenőrzés, megfigyelés, céges visszaélések feltárása, eltűnt személyek felkutatása.</p>
+            <a class="card-link" href="#kapcsolat">Ajánlatot kérek <span>→</span></a>
+          </article>
+
+          <article class="glass card tilt reveal d2">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 11 9-7 9 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg>
+            </div>
+            <h3>Birtokvédelem</h3>
+            <p>Jogellenes birtoklás és önkényes lakásfoglalás megszüntetése jogi képviselettel,
+            higgadtan és határozottan — az ingatlan átadás-átvételének teljes lebonyolításával.</p>
+            <a class="card-link" href="#kapcsolat">Ajánlatot kérek <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ RÓLUNK ═══════════ -->
+    <section class="section about" id="rolunk">
+      <div class="container about-grid">
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-frame glass">
+            <img src="assets/logo-light.svg" alt="" class="about-logo logo-on-dark">
+            <img src="assets/logo-dark.svg" alt="" class="about-logo logo-on-light">
+            <div class="about-ring r1"></div>
+            <div class="about-ring r2"></div>
+            <div class="about-ring r3"></div>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <p class="overline reveal">Miért mi</p>
+          <h2 class="reveal d1">Elegancia kívül,<br>acél fegyelem belül.</h2>
+          <p class="reveal d2">A Private Zone Security csapatát rendvédelmi és katonai múlttal
+          rendelkező, hatósági engedéllyel bíró szakemberek alkotják. Hisszük, hogy a valódi
+          biztonság nem hivalkodó: öltönyben is ugyanaz a védelem, mint egyenruhában.</p>
+
+          <ul class="checklist reveal d3">
+            <li><span class="check">✦</span><div><strong>Teljes diszkréció</strong> — minden megbízást titoktartási megállapodás véd.</div></li>
+            <li><span class="check">✦</span><div><strong>Jogszerűség</strong> — kizárólag törvényes eszközök, jogi háttérrel támogatva.</div></li>
+            <li><span class="check">✦</span><div><strong>Egyedi biztonsági terv</strong> — nincs két egyforma megbízás, nincs sablonmegoldás.</div></li>
+            <li><span class="check">✦</span><div><strong>Azonnali reagálás</strong> — dedikált kapcsolattartó és 24/7 diszpécserszolgálat.</div></li>
+          </ul>
+
+          <a href="#kapcsolat" class="btn btn-ghost reveal d4">Beszéljünk bizalmasan</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FOLYAMAT ═══════════ -->
+    <section class="section process" id="folyamat">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="overline">Hogyan dolgozunk</p>
+          <h2>Négy lépés a nyugalomig</h2>
+        </header>
+
+        <div class="steps">
+          <div class="glass step reveal">
+            <span class="step-num">01</span>
+            <h3>Bizalmas egyeztetés</h3>
+            <p>Személyes vagy online konzultáció, ahol megismerjük az Ön helyzetét — természetesen titoktartás mellett.</p>
+          </div>
+          <div class="glass step reveal d1">
+            <span class="step-num">02</span>
+            <h3>Kockázatelemzés</h3>
+            <p>Helyszíni felmérés és fenyegetettség-értékelés: feltárjuk a sebezhető pontokat, mielőtt más tenné.</p>
+          </div>
+          <div class="glass step reveal d2">
+            <span class="step-num">03</span>
+            <h3>Egyedi védelmi terv</h3>
+            <p>Testreszabott javaslat átlátható díjazással — Ön pontosan tudja, mit, miért és hogyan teszünk.</p>
+          </div>
+          <div class="glass step reveal d3">
+            <span class="step-num">04</span>
+            <h3>Végrehajtás és jelenlét</h3>
+            <p>Diszkrét kivitelezés, folyamatos kapcsolattartás és utókövetés. A nyugalma nálunk állandó szolgáltatás.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ REFERENCIÁK ═══════════ -->
+    <section class="section refs" id="referenciak">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="overline">Bizalom</p>
+          <h2>Akik már privát zónában élnek</h2>
+          <p class="section-sub">Ügyfeleink nevét soha nem adjuk ki — a szavaikat ők adták.</p>
+        </header>
+
+        <div class="quotes">
+          <blockquote class="glass quote reveal">
+            <p>„Három éve biztosítják a rendezvényeinket. A vendégeink csak annyit érzékelnek,
+            hogy minden zökkenőmentes — pontosan ez a cél.”</p>
+            <footer>— Rendezvényszervező iroda, Budapest</footer>
+          </blockquote>
+          <blockquote class="glass quote reveal d1">
+            <p>„A követeléskezelésben azt kaptam, amit ígértek: eredményt, botrány nélkül.
+            Végig jogszerűen, végig elegánsan.”</p>
+            <footer>— Ügyvédi iroda, partneri megbízás</footer>
+          </blockquote>
+          <blockquote class="glass quote reveal d2">
+            <p>„A családom védelmét bíztam rájuk. Észre sem vesszük, hogy ott vannak —
+            de tudjuk, hogy mindig ott vannak.”</p>
+            <footer>— Magánszemély, kiemelt védelem</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CTA SÁV ═══════════ -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="glass cta-panel reveal">
+          <div>
+            <h2>Az Ön privát zónája<br><span class="gold-text">egy hívásra van.</span></h2>
+            <p>Bizalmas konzultáció, 24 órán belüli visszajelzés.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="tel:+36300000000" class="btn btn-gold">+36 30 000 0000</a>
+            <a href="#kapcsolat" class="btn btn-ghost">Írjon nekünk</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ KAPCSOLAT ═══════════ -->
+    <section class="section contact" id="kapcsolat">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <p class="overline reveal">Kapcsolat</p>
+          <h2 class="reveal d1">Kezdjük egy bizalmas beszélgetéssel</h2>
+          <p class="reveal d2">Minden megkeresést szigorúan bizalmasan kezelünk.
+          Írjon nekünk, vagy hívjon minket — munkatársunk 24 órán belül jelentkezik.</p>
+
+          <ul class="contact-list reveal d3">
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
+              <div><strong>Telefon</strong><a href="tel:+36300000000">+36 30 000 0000</a></div>
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+              <div><strong>E-mail</strong><a href="mailto:info@privatezonesecurity.hu">info@privatezonesecurity.hu</a></div>
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+              <div><strong>Iroda</strong><span>Budapest — pontos cím egyeztetés után</span></div>
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+              <div><strong>Elérhetőség</strong><span>24/7 — az év minden napján</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <form class="glass contact-form reveal d2" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="fName">Név *</label>
+              <input id="fName" name="name" type="text" required autocomplete="name" placeholder="Az Ön neve">
+            </div>
+            <div class="field">
+              <label for="fPhone">Telefon</label>
+              <input id="fPhone" name="phone" type="tel" autocomplete="tel" placeholder="+36 …">
+            </div>
+          </div>
+          <div class="field">
+            <label for="fEmail">E-mail *</label>
+            <input id="fEmail" name="email" type="email" required autocomplete="email" placeholder="pelda@email.hu">
+          </div>
+          <div class="field">
+            <label for="fService">Szolgáltatás</label>
+            <select id="fService" name="service">
+              <option value="">Válasszon…</option>
+              <option>Őrzés-védelem</option>
+              <option>Személyvédelem</option>
+              <option>Rendezvénybiztosítás</option>
+              <option>Követeléskezelés</option>
+              <option>Magánnyomozás</option>
+              <option>Birtokvédelem</option>
+              <option>Egyéb / összetett megbízás</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fMsg">Üzenet *</label>
+            <textarea id="fMsg" name="message" rows="4" required placeholder="Írja le röviden, miben segíthetünk…"></textarea>
+          </div>
+          <p class="form-note">Üzenetét bizalmasan kezeljük, harmadik félnek nem adjuk ki.</p>
+          <button type="submit" class="btn btn-gold btn-block">Bizalmas üzenet küldése</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-light.svg" alt="Private Zone Security logó" class="footer-logo logo-on-dark">
+        <img src="assets/logo-dark.svg" alt="Private Zone Security logó" class="footer-logo logo-on-light">
+        <p><strong>PRIVATE ZONE SECURITY</strong><br>Diszkréció. Elegancia. Biztonság.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Lábléc navigáció">
+        <a href="#szolgaltatasok">Szolgáltatások</a>
+        <a href="#rolunk">Rólunk</a>
+        <a href="#folyamat">Folyamat</a>
+        <a href="#kapcsolat">Kapcsolat</a>
+      </nav>
+      <div class="footer-meta">
+        <p>Hatósági engedéllyel rendelkező személy- és vagyonvédelmi szolgáltató.</p>
+        <p>© <span id="year"></span> Private Zone Security. Minden jog fenntartva.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/hero3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
