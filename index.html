@@ -101,6 +101,26 @@
             <span>• 24/7 rendelkezésre állás</span>
           </div>
         </div>
+
+        <div class="hero-model reveal d2" aria-hidden="true">
+          <div class="hero-model-glow"></div>
+          <model-viewer id="heroModel"
+            src="assets/models/bodyguard.glb"
+            alt="Öltönyös biztonsági őr 3D modell"
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="14deg"
+            camera-orbit="-15deg 84deg 105%"
+            interaction-prompt="none"
+            disable-zoom
+            disable-pan
+            disable-tap
+            shadow-intensity="1.2"
+            shadow-softness="0.7"
+            exposure="1.05"
+            loading="eager">
+          </model-viewer>
+        </div>
       </div>
 
     </section>
@@ -416,6 +436,7 @@
     </div>
   </footer>
 
+  <script type="module" src="assets/js/model-viewer.min.js"></script>
   <script src="js/hero3d.js"></script>
   <script src="js/main.js"></script>
 </body>

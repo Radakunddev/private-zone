@@ -151,6 +151,12 @@
     form.reset();
   });
 
+  /* ── Hero 3D modell: egérrel forgatás desktopon ── */
+  const heroModel = document.getElementById("heroModel");
+  if (heroModel && matchMedia("(hover: hover) and (min-width: 881px)").matches) {
+    heroModel.setAttribute("camera-controls", "");
+  }
+
   /* ── Évszám ── */
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();

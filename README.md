@@ -6,9 +6,10 @@ Betűtípus: Helvetica webfontként beépítve (Regular a törzsszöveghez, Bold
 
 ## Fő jellemzők
 
-- **3D hero effekt** — a logó pajzsformája élő, 3D-ben forgó arany részecske-konstellációként
-  jelenik meg a nyitóképernyőn, az egérmozgásra parallax-szal reagál (saját, függőség nélküli
-  canvas-implementáció).
+- **3D hero** — valódi, interaktív 3D öltönyös biztonsági őr (manöken) modell a nyitóképernyőn:
+  automatikusan forog, desktopon egérrel is forgatható (`assets/models/bodyguard.glb`,
+  lokálisan vendorolt `model-viewer` komponenssel). Mögötte finom aranypor-animáció
+  (saját, függőség nélküli canvas).
 - **Glassmorphism** — üveghatású kártyák, panelek és navigáció (`backdrop-filter`).
 - **Világos / sötét téma** — kapcsolóval, a választás mentésre kerül (`localStorage`),
   a logó automatikusan vált a light/dark változat között.
@@ -33,8 +34,10 @@ Aloldalak (teljes szöveges tartalommal, GYIK-kel):
   kapcsolat.html              — Kapcsolat (űrlappal)
 
 css/style.css       — dizájn (CSS-változókkal, téma-támogatással)
-js/hero3d.js        — 3D részecske-pajzs a hero-ban (csak a főoldalon)
+js/hero3d.js        — aranypor háttér-animáció a hero-ban (csak a főoldalon)
 js/main.js          — navigáció, téma, animációk, űrlap (minden oldalon)
+assets/models/bodyguard.glb — a hero 3D öltönyös alakja (glTF binary)
+assets/js/model-viewer.min.js — Google model-viewer webkomponens (Apache-2.0, vendorolt)
 assets/logo-light.png  — hivatalos fehér logó (sötét háttérre), négyzetre vágva
 assets/logo-dark.png   — hivatalos sötét logó (világos háttérre), négyzetre vágva
 assets/logo-*-original.png — a hivatalos logók eredeti, vágatlan (1080×1080) változata
