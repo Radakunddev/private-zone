@@ -45,9 +45,10 @@ window.I18N = {
 
     /* — statisztika — */
     "stats.years": "év tapasztalat",
-    "stats.events": "biztosított rendezvény",
-    "stats.returning": "visszatérő ügyfél",
-    "stats.ready": "készenlét, az év minden napján",
+    "stats.events": "kezelt követelés",
+    "stats.returning": "peren kívül rendezve",
+    "stats.ready": "átlagos első visszajelzés",
+    "stats.static4": "24 ó",
 
     /* — szolgáltatások szekció — */
     "services.overline": "Amit nyújtunk",
@@ -165,9 +166,10 @@ window.I18N = {
 
     /* — stats — */
     "stats.years": "years of experience",
-    "stats.events": "events secured",
-    "stats.returning": "returning clients",
-    "stats.ready": "readiness, every day of the year",
+    "stats.events": "claims handled",
+    "stats.returning": "settled out of court",
+    "stats.ready": "average first response",
+    "stats.static4": "24h",
 
     /* — services section — */
     "services.overline": "What we offer",
