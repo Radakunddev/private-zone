@@ -549,15 +549,18 @@ h3 { font-size: 1.3rem; }
 .card-icon svg { width: 28px; height: 28px; }
 .card h3 { margin-bottom: .7rem; transform: translateZ(24px); }
 .card p { color: var(--ink-soft); font-size: .94rem; transform: translateZ(16px); }
+/* a szolgáltatáskártyák teljes egészében linkek (a.card) — nincs aláhúzás,
+   a szöveg öröklődik, csak a "Részletek" jelző arany */
+a.card { text-decoration: none; color: inherit; display: block; cursor: pointer; }
 .card-link {
   display: inline-flex; align-items: center; gap: .4rem;
   margin-top: 1.3rem;
   font: 700 .8rem var(--font-body); letter-spacing: .1em; text-transform: uppercase;
-  color: var(--gold); text-decoration: none;
+  color: var(--gold);
   transform: translateZ(20px);
 }
 .card-link span { transition: transform .3s var(--ease); }
-.card-link:hover span { transform: translateX(5px); }
+.card:hover .card-link span { transform: translateX(5px); }
 
 /* ── Rólunk ─────────────────────────────────────────────────── */
 .about { background: linear-gradient(180deg, transparent, var(--bg-2) 20%, var(--bg-2) 80%, transparent); }

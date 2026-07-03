@@ -87,13 +87,13 @@ window.I18N = {
     /* — referenciák — */
     "refs.overline": "Bizalom",
     "refs.title": "Akik már privát zónában élnek",
-    "refs.sub": "Ügyfeleink nevét soha nem adjuk ki — a szavaikat ők adták.",
-    "refs.q1": "„Három éve biztosítják a rendezvényeinket. A vendégeink csak annyit érzékelnek, hogy minden zökkenőmentes — pontosan ez a cél.”",
-    "refs.q1.f": "— Rendezvényszervező iroda, Budapest",
+    "refs.sub": "Ügyfeleink nevét soha nem adjuk ki — de a követeléskezelésről szóló szavaikat ők adták.",
+    "refs.q1": "„Hónapokig nem fizetett a partnerünk. A Private Zone bekapcsolódott, és három héten belül megszületett a részletfizetési megállapodás — per és botrány nélkül.”",
+    "refs.q1.f": "— Építőipari kft., Budapest",
     "refs.q2": "„A követeléskezelésben azt kaptam, amit ígértek: eredményt, botrány nélkül. Végig jogszerűen, végig elegánsan.”",
     "refs.q2.f": "— Ügyvédi iroda, partneri megbízás",
-    "refs.q3": "„A családom védelmét bíztam rájuk. Észre sem vesszük, hogy ott vannak — de tudjuk, hogy mindig ott vannak.”",
-    "refs.q3.f": "— Magánszemély, kiemelt védelem",
+    "refs.q3": "„Már lemondtam a pénzről. A személyes, helyszíni egyeztetés után az adós mégis fizetett — diszkréten, korrektül intézték.”",
+    "refs.q3.f": "— Magánszemély, kölcsönkövetelés",
 
     /* — kapcsolat + űrlap — */
     "contact.overline": "Kapcsolat",
@@ -207,13 +207,13 @@ window.I18N = {
     /* — references — */
     "refs.overline": "Trust",
     "refs.title": "Those already living in a private zone",
-    "refs.sub": "We never disclose our clients' names — but their words are their own.",
-    "refs.q1": "“They have secured our events for three years. Our guests only notice that everything runs seamlessly — which is exactly the goal.”",
-    "refs.q1.f": "— Event agency, Budapest",
+    "refs.sub": "We never disclose our clients’ names — but the words about our debt collection are their own.",
+    "refs.q1": "“Our partner hadn’t paid for months. Private Zone stepped in, and within three weeks there was an instalment agreement — with no lawsuit and no scandal.”",
+    "refs.q1.f": "— Construction company, Budapest",
     "refs.q2": "“In debt collection I got what they promised: results, without scandal. Lawful throughout, elegant throughout.”",
     "refs.q2.f": "— Law firm, partner engagement",
-    "refs.q3": "“I entrusted them with my family's protection. We don't even notice they are there — but we know they always are.”",
-    "refs.q3.f": "— Private individual, priority protection",
+    "refs.q3": "“I had already written off the money. After the in-person, on-site discussion the debtor paid after all — handled discreetly and fairly.”",
+    "refs.q3.f": "— Private individual, loan claim",
 
     /* — contact + form — */
     "contact.overline": "Contact",
