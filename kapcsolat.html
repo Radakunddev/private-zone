@@ -113,20 +113,20 @@
           <div class="form-row">
             <div class="field">
               <label for="fName" data-i18n="form.name">Név *</label>
-              <input id="fName" name="name" type="text" required autocomplete="name" placeholder="Az Ön neve" data-i18n="form.name_ph" data-i18n-attr="placeholder">
+              <input id="fName" name="name" type="text" required minlength="2" maxlength="80" autocomplete="name" placeholder="Az Ön neve" data-i18n="form.name_ph" data-i18n-attr="placeholder">
             </div>
             <div class="field">
-              <label for="fPhone" data-i18n="form.phone">Telefon</label>
-              <input id="fPhone" name="phone" type="tel" autocomplete="tel" placeholder="+36 …">
+              <label for="fPhone" data-i18n="form.phone">Telefon *</label>
+              <input id="fPhone" name="phone" type="tel" required inputmode="tel" pattern="[0-9+()/ .\-]{6,20}" minlength="6" maxlength="30" autocomplete="tel" placeholder="+36 …">
             </div>
           </div>
           <div class="field">
             <label for="fEmail" data-i18n="form.email">E-mail *</label>
-            <input id="fEmail" name="email" type="email" required autocomplete="email" placeholder="pelda@email.hu" data-i18n="form.email_ph" data-i18n-attr="placeholder">
+            <input id="fEmail" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="pelda@email.hu" data-i18n="form.email_ph" data-i18n-attr="placeholder">
           </div>
           <div class="field">
-            <label for="fService" data-i18n="form.service">Szolgáltatás</label>
-            <select id="fService" name="service">
+            <label for="fService" data-i18n="form.service">Szolgáltatás *</label>
+            <select id="fService" name="service" required>
               <option value="" data-i18n="form.choose">Válasszon…</option>
               <option data-i18n="svc.koveteles">Követeléskezelés</option>
               <option data-i18n="svc.orzes">Őrzés-védelem</option>
@@ -139,7 +139,12 @@
           </div>
           <div class="field">
             <label for="fMsg" data-i18n="form.message">Üzenet *</label>
-            <textarea id="fMsg" name="message" rows="4" required placeholder="Írja le röviden, miben segíthetünk…" data-i18n="form.message_ph" data-i18n-attr="placeholder"></textarea>
+            <textarea id="fMsg" name="message" rows="4" required minlength="5" maxlength="2000" placeholder="Írja le röviden, miben segíthetünk…" data-i18n="form.message_ph" data-i18n-attr="placeholder"></textarea>
+          </div>
+          <!-- Spam-csapda: valódi látogató nem látja és nem tölti ki (rejtett) -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="fWebsite">Weboldal (ne töltse ki)</label>
+            <input id="fWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
           <p class="form-note" data-i18n="form.note">Üzenetét bizalmasan kezeljük, harmadik félnek nem adjuk ki.</p>
           <button type="submit" class="btn btn-gold btn-block" data-i18n="form.submit">Bizalmas üzenet küldése</button>

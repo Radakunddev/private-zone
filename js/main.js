@@ -138,6 +138,14 @@
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
 
+  // Spam-védelmi paraméterek.
+  const HP_NAME = "website";        // honeypot mező neve
+  const MIN_FILL_MS = 3000;         // ennél gyorsabb kitöltés = bot
+  const COOLDOWN_MS = 30000;        // két küldés között kötelező várakozás
+  const MAX_LINKS = 3;              // ennél több link az üzenetben = spam
+  const COOLDOWN_KEY = "pzs-last-submit";
+  const formReadyAt = Date.now();   // az oldal/űrlap megjelenésének ideje
+
   // Aktuális nyelvhez tartozó szótári szöveg (fallback az adott kulcsra).
   function i18nText(key, fallback) {
     const lang = document.documentElement.getAttribute("data-lang") || "hu";
@@ -150,11 +158,46 @@
 
   if (form) form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // 1) Natív mezővalidáció — minden mező kötelező és formátumhelyes legyen.
+    form.classList.add("was-validated");
     if (!form.reportValidity()) return;
 
     const submitBtn = form.querySelector('button[type="submit"], [type="submit"]');
     const d = new FormData(form);
     const val = (k) => (d.get(k) || "").toString().trim();
+
+    // 2) Honeypot: valódi látogató nem látja/tölti ki ezt a mezőt.
+    //    Ha ki van töltve, bot küldte — csendben elnyeljük (nem küldünk),
+    //    de sikeresnek mutatjuk, hogy ne próbálkozzon tovább.
+    if (val(HP_NAME)) {
+      if (status) { status.textContent = i18nText("form.sent", "Köszönjük!"); status.removeAttribute("data-error"); }
+      form.reset();
+      return;
+    }
+
+    // 3) Időcsapda: ha az űrlap gyanúsan gyorsan lett elküldve, botra utal.
+    if (Date.now() - formReadyAt < MIN_FILL_MS) {
+      if (status) { status.textContent = i18nText("form.wait", "Kérjük, várjon egy kicsit."); status.setAttribute("data-error", ""); }
+      return;
+    }
+
+    // 4) Küldési korlát (cooldown): rövid időn belüli ismételt küldés blokk.
+    try {
+      const last = parseInt(localStorage.getItem(COOLDOWN_KEY) || "0", 10);
+      if (last && Date.now() - last < COOLDOWN_MS) {
+        if (status) { status.textContent = i18nText("form.wait", "Kérjük, várjon egy kicsit."); status.setAttribute("data-error", ""); }
+        return;
+      }
+    } catch (e) {}
+
+    // 5) Link-özön szűrő: a spam jellemzően sok linket tartalmaz.
+    const linkCount = (val("message").match(/https?:\/\/|www\./gi) || []).length;
+    if (linkCount > MAX_LINKS) {
+      if (status) { status.textContent = i18nText("form.sent", "Köszönjük!"); status.removeAttribute("data-error"); }
+      form.reset();
+      return;
+    }
 
     // Ember által olvasható dátum a {{datum}} változóhoz (magyar formátum).
     const now = new Date();
@@ -195,8 +238,11 @@
           "form.sent",
           "Köszönjük! Üzenetét megkaptuk — hamarosan jelentkezünk."
         );
+        status.removeAttribute("data-error");
       }
+      try { localStorage.setItem(COOLDOWN_KEY, String(Date.now())); } catch (e) {}
       form.reset();
+      form.classList.remove("was-validated");
     };
     const showError = () => {
       if (status) {

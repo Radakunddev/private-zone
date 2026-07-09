@@ -703,8 +703,27 @@ a.card { text-decoration: none; color: inherit; display: block; cursor: pointer;
   box-shadow: 0 0 0 3px rgba(var(--gold-rgb),.18);
 }
 .field input::placeholder, .field textarea::placeholder { color: var(--ink-faint); }
+/* Csak akkor jelöljük hibásnak a mezőt, ha a látogató már interakcióba lépett vele */
+.field input:not(:placeholder-shown):invalid,
+.field textarea:not(:placeholder-shown):invalid,
+.contact-form.was-validated .field :invalid {
+  border-color: #c0453b;
+  box-shadow: 0 0 0 3px rgba(192,69,59,.15);
+}
+/* Spam-csapda (honeypot): rejtve marad a valódi látogatók elől, de a
+   DOM-ban jelen van, hogy a botok kitöltsék — nem display:none, mert azt
+   egyes botok kiszűrik */
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
 .form-note { font-size: .78rem; color: var(--ink-faint); margin: .2rem 0 1.2rem; }
 .form-status { margin-top: .9rem; font-size: .88rem; color: var(--gold); min-height: 1.2em; }
+.form-status[data-error] { color: #d15a4f; }
 
 /* ── Footer ─────────────────────────────────────────────────── */
 .footer {
