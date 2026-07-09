@@ -134,7 +134,7 @@
 
   /* ── Kapcsolati űrlap (webhookra küldve, JSON POST) ── */
   const WEBHOOK_URL =
-    "https://d8758b36-492c-4361-9bae-d59f53954c4f.lovableproject.com/api/public/hook/ab640c16ce2561c820c6f893812eb688d79a5500aa5a446e";
+    "https://id-preview--d8758b36-492c-4361-9bae-d59f53954c4f.lovable.app/api/public/hook/ab640c16ce2561c820c6f893812eb688d79a5500aa5a446e";
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
 
