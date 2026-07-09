@@ -171,13 +171,12 @@
       status.removeAttribute("data-error");
     }
 
-    try {
-      const res = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("HTTP " + res.status);
+    // A törzs JSON, de "text/plain" content-type-pal küldjük: így a kérés
+    // CORS szempontból "egyszerű" marad, és nem indít preflight (OPTIONS)
+    // kérést, amit a webhook nem feltétlen kezel. A hook a nyers törzset
+    // JSON-ként tudja értelmezni.
+    const body = JSON.stringify(payload);
+    const showSent = () => {
       if (status) {
         status.textContent = i18nText(
           "form.sent",
@@ -185,13 +184,41 @@
         );
       }
       form.reset();
-    } catch (err) {
+    };
+    const showError = () => {
       if (status) {
         status.textContent = i18nText(
           "form.error",
           "Hiba történt a küldés során. Kérjük, próbálja újra, vagy hívjon minket."
         );
         status.setAttribute("data-error", "");
+      }
+    };
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body,
+      });
+      // A szerver olvasható választ adott (van CORS-fejléc).
+      if (res.ok) showSent();
+      else showError();
+    } catch (err) {
+      // A fetch eldobta magát: jellemzően azért, mert a webhook nem küld
+      // CORS-fejlécet, így a böngésző elrejti a választ. Ilyenkor "no-cors"
+      // módban újraküldjük — a kérés célba ér, csak a válasz lesz átlátszó,
+      // ezért sikeresnek tekintjük (best-effort kézbesítés).
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body,
+        });
+        showSent();
+      } catch (err2) {
+        showError();
       }
     } finally {
       if (submitBtn) submitBtn.disabled = false;
