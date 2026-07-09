@@ -132,31 +132,70 @@
     });
   }
 
-  /* ── Kapcsolati űrlap (mailto-ba csomagolva, backend nélkül) ── */
+  /* ── Kapcsolati űrlap (webhookra küldve, JSON POST) ── */
+  const WEBHOOK_URL =
+    "https://d8758b36-492c-4361-9bae-d59f53954c4f.lovableproject.com/api/public/hook/ab640c16ce2561c820c6f893812eb688d79a5500aa5a446e";
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
-  if (form) form.addEventListener("submit", (e) => {
+
+  // Aktuális nyelvhez tartozó szótári szöveg (fallback az adott kulcsra).
+  function i18nText(key, fallback) {
+    const lang = document.documentElement.getAttribute("data-lang") || "hu";
+    const a = window.I18N && window.I18N[lang];
+    if (a && a[key] != null) return a[key];
+    const b = window.I18N_PAGES && window.I18N_PAGES[lang];
+    if (b && b[key] != null) return b[key];
+    return fallback;
+  }
+
+  if (form) form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.reportValidity()) return;
-    const en = document.documentElement.getAttribute("data-lang") === "en";
+
+    const submitBtn = form.querySelector('button[type="submit"], [type="submit"]');
     const d = new FormData(form);
-    const subject = encodeURIComponent(
-      en
-        ? `Quote request — ${d.get("service") || "general enquiry"}`
-        : `Ajánlatkérés — ${d.get("service") || "általános megkeresés"}`
-    );
-    const body = encodeURIComponent(
-      en
-        ? `Name: ${d.get("name")}\nPhone: ${d.get("phone") || "-"}\nEmail: ${d.get("email")}\n` +
-          `Service: ${d.get("service") || "-"}\n\nMessage:\n${d.get("message")}`
-        : `Név: ${d.get("name")}\nTelefon: ${d.get("phone") || "-"}\nE-mail: ${d.get("email")}\n` +
-          `Szolgáltatás: ${d.get("service") || "-"}\n\nÜzenet:\n${d.get("message")}`
-    );
-    window.location.href = `mailto:info@privatezonesecurity.hu?subject=${subject}&body=${body}`;
-    status.textContent = en
-      ? "Thank you! Your email client has opened with the prepared message."
-      : "Köszönjük! A levelezőprogramja megnyílt az előkészített üzenettel.";
-    form.reset();
+    const payload = {
+      name: (d.get("name") || "").toString().trim(),
+      email: (d.get("email") || "").toString().trim(),
+      phone: (d.get("phone") || "").toString().trim(),
+      service: (d.get("service") || "").toString().trim(),
+      message: (d.get("message") || "").toString().trim(),
+      language: document.documentElement.getAttribute("data-lang") || "hu",
+      page: location.pathname + location.search,
+      submitted_at: new Date().toISOString(),
+    };
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (status) {
+      status.textContent = i18nText("form.sending", "Küldés…");
+      status.removeAttribute("data-error");
+    }
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      if (status) {
+        status.textContent = i18nText(
+          "form.sent",
+          "Köszönjük! Üzenetét megkaptuk — hamarosan jelentkezünk."
+        );
+      }
+      form.reset();
+    } catch (err) {
+      if (status) {
+        status.textContent = i18nText(
+          "form.error",
+          "Hiba történt a küldés során. Kérjük, próbálja újra, vagy hívjon minket."
+        );
+        status.setAttribute("data-error", "");
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
   });
 
   /* ── Hero 3D modell: egérrel forgatás desktopon ── */

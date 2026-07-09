@@ -118,7 +118,9 @@ window.I18N = {
     "form.message_ph": "Írja le röviden, miben segíthetünk…",
     "form.note": "Üzenetét bizalmasan kezeljük, harmadik félnek nem adjuk ki.",
     "form.submit": "Bizalmas üzenet küldése",
-    "form.sent": "Köszönjük! A levelezőprogramja megnyílt az előkészített üzenettel.",
+    "form.sending": "Küldés…",
+    "form.sent": "Köszönjük! Üzenetét megkaptuk — hamarosan jelentkezünk.",
+    "form.error": "Hiba történt a küldés során. Kérjük, próbálja újra, vagy hívjon minket.",
 
     /* — dokumentumcím — */
     "title.index": "Követeléskezelés Budapesten — Private Zone Security | Diszkrét, jogszerű behajtás",
@@ -239,7 +241,9 @@ window.I18N = {
     "form.message_ph": "Briefly describe how we can help…",
     "form.note": "We handle your message confidentially and never share it with third parties.",
     "form.submit": "Send confidential message",
-    "form.sent": "Thank you! Your email client has opened with the prepared message.",
+    "form.sending": "Sending…",
+    "form.sent": "Thank you! We've received your message — we'll be in touch shortly.",
+    "form.error": "Something went wrong while sending. Please try again or call us.",
 
     /* — document title — */
     "title.index": "Debt Collection in Budapest — Private Zone Security | Discreet, lawful recovery",
