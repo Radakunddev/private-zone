@@ -154,15 +154,28 @@
 
     const submitBtn = form.querySelector('button[type="submit"], [type="submit"]');
     const d = new FormData(form);
+    const val = (k) => (d.get(k) || "").toString().trim();
+
+    // Ember által olvasható dátum a {{datum}} változóhoz (magyar formátum).
+    const now = new Date();
+    const datum = now.toLocaleString("hu-HU", {
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit",
+    });
+
+    // A webhook e-mail sablonja ezeket a placeholdereket ismeri fel:
+    // {{datum}} {{nev}} {{szolgaltatas}} {{telefon}} {{uzenet}}
     const payload = {
-      name: (d.get("name") || "").toString().trim(),
-      email: (d.get("email") || "").toString().trim(),
-      phone: (d.get("phone") || "").toString().trim(),
-      service: (d.get("service") || "").toString().trim(),
-      message: (d.get("message") || "").toString().trim(),
+      datum,
+      nev: val("name"),
+      email: val("email"),
+      telefon: val("phone"),
+      szolgaltatas: val("service"),
+      uzenet: val("message"),
+      // technikai metaadatok (a sablon figyelmen kívül hagyja, de hasznos):
       language: document.documentElement.getAttribute("data-lang") || "hu",
       page: location.pathname + location.search,
-      submitted_at: new Date().toISOString(),
+      submitted_at: now.toISOString(),
     };
 
     if (submitBtn) submitBtn.disabled = true;
